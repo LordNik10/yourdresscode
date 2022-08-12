@@ -2,12 +2,58 @@
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  width: 100%;
 }
-
-span {
+.container-logo {
+  // display: 'flex';
+  // align-items: 'center';
+  // justify-content: 'center';
+  // gap: '2%';
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2%;
+  width: 25%;
+}
+.website-title {
   font-family: Onyx;
-  src: url('../assests/font/OPTIOnyx.otf');
+  // src: url('../assests/font/OPTIOnyx.otf');
   color: white;
   font-size: 43px;
+}
+
+.container-menu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  width: 100%;
+}
+
+.menu-list li {
+  list-style: none;
+}
+
+.menu-list li a {
+  color: white;
+  text-decoration: none;
+}
+
+.container-login {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+}
+
+.container-login a {
+  color: white;
+  text-decoration: none;
 }
