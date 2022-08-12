@@ -1,6 +1,7 @@
-import React from "react";
-import logo from "../assests/logo";
-import { theme } from "../config/theme";
+import React from 'react';
+import logo from '../assests/logo.png';
+import { theme } from '../config/theme';
+import './NavBar.scss';
 
 function NavBar() {
   return (
@@ -8,7 +9,8 @@ function NavBar() {
       className="container"
       style={{ backgroundColor: theme.palette.primary.main }}
     >
-      <img src={logo} />
+      <img src={logo} alt="logo" />
+      <span>Your Dress Code</span>
     </div>
   );
 }
