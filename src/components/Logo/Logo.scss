@@ -1,0 +1,16 @@
+.logo-large {
+  width: 50px;
+  display: flex;
+}
+.logo-small {
+  display: none;
+}
+@media screen and (max-width: 901px) {
+  .logo-large {
+    display: none;
+  }
+  .logo-small {
+    display: flex;
+    width: 40px;
+  }
+}
