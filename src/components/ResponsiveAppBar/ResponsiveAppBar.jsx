@@ -14,6 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
+import {
+  UseAuthContext,
+  UseAuthContextUpdate,
+} from '../../context/auth-context';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,6 +25,9 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const { isLogged } = UseAuthContext();
+  const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -35,6 +42,10 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const Prova11 = () => {
+    setIsLogged.handleLogin();
   };
 
   return (
@@ -132,36 +143,56 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              {isLogged && (
+                <Tooltip title="Open settings">
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </Tooltip>
+              )}
+
+              {!isLogged && (
+                <Typography
+                  textAlign="center"
+                  sx={{
+                    color: 'white',
+                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                    fontWeight: '500',
+                  }}
+                >
+                  Login
+                </Typography>
+              )}
+            </IconButton>
+            {isLogged && (
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            )}
           </Box>
         </Toolbar>
       </Container>
+      <button type="button" onClick={Prova11}>
+        Prova
+      </button>
     </AppBar>
   );
 }
