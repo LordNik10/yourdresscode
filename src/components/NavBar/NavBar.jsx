@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../assests/logo.png';
-import hamburgerMenu from '../assests/hamburger.png';
-import { theme } from '../config/theme';
+import logo from '../../assests/logo.png';
+import hamburgerMenu from '../../assests/hamburger.png';
+import { theme } from '../../config/theme';
 import './NavBar.scss';
 
 function NavBar() {

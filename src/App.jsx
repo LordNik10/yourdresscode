@@ -1,10 +1,14 @@
-import NavBar from './components/NavBar';
+import * as React from 'react';
+import ResponsiveAppBar from './components/ResponsiveAppBar/ResponsiveAppBar';
 import './App.css';
+import LoginProvider from './context/auth-context';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <LoginProvider>
+        <ResponsiveAppBar />
+      </LoginProvider>
     </div>
   );
 }
