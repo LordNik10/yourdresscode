@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const Prova11 = () => {
+  const madeLogin = () => {
     setIsLogged.handleLogin();
   };
 
@@ -158,6 +158,7 @@ function ResponsiveAppBar() {
                     fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
                     fontWeight: '500',
                   }}
+                  onClick={madeLogin}
                 >
                   Login
                 </Typography>
@@ -190,9 +191,6 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
-      <button type="button" onClick={Prova11}>
-        Prova
-      </button>
     </AppBar>
   );
 }
