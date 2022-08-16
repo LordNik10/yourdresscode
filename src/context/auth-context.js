@@ -44,5 +44,5 @@ LoginProvider.defaultProps = {
 };
 
 LoginProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
+  children: PropTypes.element,
 };

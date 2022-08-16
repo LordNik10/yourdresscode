@@ -14,10 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
-import {
-  UseAuthContext,
-  UseAuthContextUpdate,
-} from '../../context/auth-context';
+import { UseAuthContext } from '../../context/auth-context';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -27,7 +24,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const { isLogged } = UseAuthContext();
-  const setIsLogged = UseAuthContextUpdate();
+  // const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -44,9 +41,9 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const madeLogin = () => {
-    setIsLogged.handleLogin();
-  };
+  // const madeLogin = () => {
+  //   setIsLogged.handleLogin();
+  // };
 
   return (
     <AppBar
@@ -158,7 +155,6 @@ function ResponsiveAppBar() {
                     fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
                     fontWeight: '500',
                   }}
-                  onClick={madeLogin}
                 >
                   Login
                 </Typography>
