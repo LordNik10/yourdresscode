@@ -6,7 +6,7 @@ export const theme = createTheme({
       main: '#1D1D1B',
     },
     secondary: {
-      main: '#fdc187',
+      main: '#d9893c',
       contrastText: '#000',
     },
     error: {
@@ -42,6 +42,12 @@ export const theme = createTheme({
   },
   shape: {
     borderRadius: 0,
+  },
+  button: {
+    border: 'orange',
+    '&:hover': {
+      background: 'orange',
+    },
   },
   components: {
     MuiTypography: {

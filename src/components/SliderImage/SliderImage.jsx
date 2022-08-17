@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard({ imgList }) {
   return (
     <Container
       sx={{
@@ -22,12 +23,12 @@ export default function ImgMediaCard() {
         <CardMedia
           component="img"
           alt="green iguana"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="220"
+          image={imgList[0].img}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {imgList[0].name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -43,12 +44,12 @@ export default function ImgMediaCard() {
         <CardMedia
           component="img"
           alt="green iguana"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="220"
+          image={imgList[1].img}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {imgList[1].name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -64,12 +65,13 @@ export default function ImgMediaCard() {
         <CardMedia
           component="img"
           alt="green iguana"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="220"
+          image={imgList[2].img}
+          sx={{ backgroundPosition: 'center' }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {imgList[2].name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -84,3 +86,16 @@ export default function ImgMediaCard() {
     </Container>
   );
 }
+
+ImgMediaCard.defaultProps = {
+  imgList: [],
+};
+
+ImgMediaCard.propTypes = {
+  imgList: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      img: PropTypes.string,
+    }),
+  ),
+};
