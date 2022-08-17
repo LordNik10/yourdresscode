@@ -1,5 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import SliderImage from '../../components/SliderImage/SliderImage';
+import { theme } from '../../config/theme';
 import './HomePage.scss';
 
 function HomePage() {
@@ -11,7 +12,8 @@ function HomePage() {
           sx={{
             fontFamily: 'broadway',
             color: 'white',
-            fontSize: { xs: '30px', sm: '49px', md: '98px' },
+            // fontSize: { xs: '30px', sm: '49px', md: '98px' },
+            fontSize: theme.typography.h1,
           }}
         >
           Your Dress Code
@@ -22,11 +24,17 @@ function HomePage() {
             fontFamily: 'Californian FB',
             color: 'white',
             fontStyle: 'Italic',
-            fontSize: { xs: '20px', sm: '31px', md: '62px' },
+            fontSize: theme.typography.h2,
           }}
         >
           Il tuo stile a portata di mano
         </Typography>
+        <Button
+          variant="outlined"
+          sx={{ borderColor: 'orange', color: 'orange' }}
+        >
+          Outlined
+        </Button>
       </Box>
       <SliderImage />
     </>

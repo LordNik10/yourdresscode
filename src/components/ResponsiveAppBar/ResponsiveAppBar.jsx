@@ -48,7 +48,12 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: theme.palette.primary.main }}
+      sx={{
+        backgroundColor: theme.palette.primary.main,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
