@@ -3,11 +3,14 @@ import './HomePage.scss';
 
 function HomePage() {
   return (
-    <Box className="container-homepage" sx={{ maxWidth: '2000px' }}>
+    <Box className="container-homepage">
       <Typography
         component="h1"
-        sx={{ fontFamily: 'broadway', color: 'white' }}
-        className="title-homepage"
+        sx={{
+          fontFamily: 'broadway',
+          color: 'white',
+          fontSize: { xs: '30px', sm: '49px', md: '98px' },
+        }}
       >
         Your Dress Code
       </Typography>
@@ -17,8 +20,8 @@ function HomePage() {
           fontFamily: 'Californian FB',
           color: 'white',
           fontStyle: 'Italic',
+          fontSize: { xs: '20px', sm: '31px', md: '62px' },
         }}
-        className="subtitle-homepage"
       >
         Il tuo stile a portata di mano
       </Typography>

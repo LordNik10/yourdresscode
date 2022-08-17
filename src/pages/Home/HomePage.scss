@@ -8,19 +8,3 @@
   align-items: center;
   flex-direction: column;
 }
-
-.title-homepage {
-  font-size: 98px;
-}
-.subtitle-homepage {
-  font-size: 62px;
-}
-
-@media screen and (max-width: 901px) {
-  .title-homepage {
-    font-size: 49px;
-  }
-  .subtitle-homepage {
-    font-size: 31px;
-  }
-}

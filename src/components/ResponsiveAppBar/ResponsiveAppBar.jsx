@@ -115,7 +115,7 @@ function ResponsiveAppBar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', sm: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'Onyx',
               fontSize: '35px',
