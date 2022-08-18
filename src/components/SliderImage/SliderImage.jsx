@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -16,73 +17,48 @@ export default function ImgMediaCard({ imgList }) {
         alignItems: 'center',
         width: '100%',
         marginTop: '2%',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        flexDirection: { xs: 'column', md: 'row' },
+        gap: '5%',
       }}
+      maxWidth={false}
     >
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="220"
-          image={imgList[0].img}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {imgList[0].name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="220"
-          image={imgList[1].img}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {imgList[1].name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="220"
-          image={imgList[2].img}
-          sx={{ backgroundPosition: 'center' }}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {imgList[2].name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
+      {imgList.map((el) => (
+        <Card
+          sx={{
+            maxWidth: 345,
+            height: 460,
+            width: { xs: '80%', md: '33%' },
+            marginTop: '2%',
+          }}
+          key={el.id}
+        >
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="220"
+            image={el.img}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {el.name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {el.text}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">
+              <Link
+                to="/products"
+                style={{ textDecoration: 'none', color: '#1976d2' }}
+              >
+                Product
+              </Link>
+            </Button>
+          </CardActions>
+        </Card>
+      ))}
     </Container>
   );
 }
@@ -94,8 +70,10 @@ ImgMediaCard.defaultProps = {
 ImgMediaCard.propTypes = {
   imgList: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number,
       name: PropTypes.string,
       img: PropTypes.string,
+      text: PropTypes.string,
     }),
   ),
 };

@@ -1,4 +1,5 @@
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
+import { Link } from 'react-router-dom';
 import SliderImage from '../../components/SliderImage/SliderImage';
 import { theme } from '../../config/theme';
 import './HomePage.scss';
@@ -9,16 +10,22 @@ import product3 from '../../assests/img-product3.jpg';
 
 const products = [
   {
+    id: 1,
     name: 'White T-Shirt',
     img: product1,
+    text: 'This t-shirt is made from 100% cotton and is finished with a snug fit for a more flattering look. This versatile piece is timeless and will be the star of your wardrobe.',
   },
   {
+    id: 2,
     name: 'Fantasy T-Shirt',
     img: product2,
+    text: 'This shirt is all you need. A perfect summer tee for the holidays, or cool enough to wear year-round. With a soft cotton fabric and white background this t-shirt can be dressed up really easily!',
   },
   {
+    id: 3,
     name: 'Adidas sweatshirt',
     img: product3,
+    text: 'The Adidas Champion sweatshirt is made for long days on the field. This soft, stretch fabric with a hint of spandex is designed to keep you comfortable and firm through intense games. As an added bonus, it comes in four different color shades so you can mix up your favorite look!',
   },
 ];
 
@@ -47,7 +54,7 @@ function HomePage() {
         >
           Il tuo stile a portata di mano
         </Typography>
-        <Button
+        {/* <Button
           variant="outlined"
           sx={{
             borderColor: 'orange',
@@ -55,15 +62,20 @@ function HomePage() {
             marginTop: '10%',
             width: '180px',
             height: '60px',
+            padding: '0',
             ':hover': {
               backgroundColor: theme.palette.secondary.main,
               border: theme.palette.secondary.main,
               color: 'white',
+              opacity: '0.8',
             },
           }}
-        >
+          className="ciao"
+        > */}
+        <Link to="/products" className="styled-link">
           Show Products
-        </Button>
+        </Link>
+        {/* </Button> */}
       </Box>
       {/* <Container
         sx={{
@@ -83,7 +95,7 @@ function HomePage() {
           aiutano anche a sentirci meglio con noi stessi.
         </Typography>
       </Container> */}
-      <Container>
+      <Container maxWidth={false}>
         <Typography
           component="h3"
           sx={{ padding: '24px', fontFamily: 'Roboto', fontSize: '30px' }}
