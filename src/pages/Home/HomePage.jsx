@@ -6,6 +6,9 @@ import './HomePage.scss';
 import product1 from '../../assests/img-product1.jpg';
 import product2 from '../../assests/img-product2.jpg';
 import product3 from '../../assests/img-product3.jpg';
+import Strengths from '../../components/Strengths/Strengths';
+import quality from '../../assests/imgquality.png';
+import trasparency from '../../assests/imgtrasparency.png';
 // import imgHistory from '../../assests/img-history.png';
 
 const products = [
@@ -26,6 +29,21 @@ const products = [
     name: 'Adidas sweatshirt',
     img: product3,
     text: 'The Adidas Champion sweatshirt is made for long days on the field. This soft, stretch fabric with a hint of spandex is designed to keep you comfortable and firm through intense games. As an added bonus, it comes in four different color shades so you can mix up your favorite look!',
+  },
+];
+
+const strengths = [
+  {
+    id: 1,
+    name: 'Trasparency',
+    img: trasparency,
+    text: 'We believe our strength has always been our total transparency when purchasing clothing. We will always tell you what you need to know, so that you can make an informed decision regarding your purchase.',
+  },
+  {
+    id: 2,
+    name: 'Quality',
+    img: quality,
+    text: 'Our strength is to work daily to ensure the highest quality of our products for our customers. We are proud of our attention to customer service, and strive to make every customer happy',
   },
 ];
 
@@ -102,7 +120,8 @@ function HomePage() {
         >
           Our Products
         </Typography>
-        <SliderImage imgList={products} />
+        <SliderImage productsList={products} />
+        <Strengths strengthsList={strengths} />
       </Container>
     </>
   );

@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 
-export default function ImgMediaCard({ imgList }) {
+export default function ImgMediaCard({ productsList }) {
   return (
     <Container
       sx={{
@@ -23,7 +23,7 @@ export default function ImgMediaCard({ imgList }) {
       }}
       maxWidth={false}
     >
-      {imgList.map((el) => (
+      {productsList.map((el) => (
         <Card
           sx={{
             maxWidth: 345,
@@ -33,12 +33,15 @@ export default function ImgMediaCard({ imgList }) {
           }}
           key={el.id}
         >
-          <CardMedia
-            component="img"
-            alt="green iguana"
-            height="220"
-            image={el.img}
-          />
+          <Link to="/products">
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="220"
+              image={el.img}
+            />
+          </Link>
+
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {el.name}
@@ -51,9 +54,14 @@ export default function ImgMediaCard({ imgList }) {
             <Button size="small">
               <Link
                 to="/products"
-                style={{ textDecoration: 'none', color: '#1976d2' }}
+                style={{
+                  textDecoration: 'none',
+                  color: '#1976d2',
+                  border: '1px solid #1976d2',
+                  padding: '5px',
+                }}
               >
-                Product
+                Show Products
               </Link>
             </Button>
           </CardActions>
@@ -64,11 +72,11 @@ export default function ImgMediaCard({ imgList }) {
 }
 
 ImgMediaCard.defaultProps = {
-  imgList: [],
+  productsList: [],
 };
 
 ImgMediaCard.propTypes = {
-  imgList: PropTypes.arrayOf(
+  productsList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
