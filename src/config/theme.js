@@ -6,7 +6,7 @@ export const theme = createTheme({
       main: '#1D1D1B',
     },
     secondary: {
-      main: '#fdc187',
+      main: '#d9893c',
       contrastText: '#000',
     },
     error: {
@@ -34,7 +34,7 @@ export const theme = createTheme({
     values: {
       xs: 0,
       sm: 576,
-      md: 768,
+      md: 900,
       lg: 992,
       xl: 1200,
       xxl: 1600,
@@ -42,6 +42,12 @@ export const theme = createTheme({
   },
   shape: {
     borderRadius: 0,
+  },
+  button: {
+    border: 'orange',
+    '&:hover': {
+      background: 'orange',
+    },
   },
   components: {
     MuiTypography: {
@@ -57,19 +63,25 @@ export const theme = createTheme({
 
 theme.typography.h1 = {
   [theme.breakpoints.up('xs')]: {
-    fontSize: '28px',
+    fontSize: '30px',
   },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '40px',
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '49px',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '98px',
   },
 };
 
 theme.typography.h2 = {
   [theme.breakpoints.up('xs')]: {
-    fontSize: '24px',
+    fontSize: '20px',
   },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '32px',
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '31px',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '62px',
   },
 };
 

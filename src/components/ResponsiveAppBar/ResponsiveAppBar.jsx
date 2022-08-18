@@ -48,7 +48,12 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: theme.palette.primary.main }}
+      sx={{
+        backgroundColor: theme.palette.primary.main,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -115,7 +120,7 @@ function ResponsiveAppBar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', sm: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'Onyx',
               fontSize: '35px',
