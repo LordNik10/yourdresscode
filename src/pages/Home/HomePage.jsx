@@ -28,7 +28,7 @@ const products = [
     id: 3,
     name: 'Adidas sweatshirt',
     img: product3,
-    text: 'The Adidas Champion sweatshirt is made for long days on the field. This soft, stretch fabric with a hint of spandex is designed to keep you comfortable and firm through intense games. As an added bonus, it comes in four different color shades so you can mix up your favorite look!',
+    text: 'The Adidas Champion sweatshirt is made for long days on the field. This soft, stretch fabric with a hint of spandex is designed to keep you comfortable and firm through intense games. ',
   },
 ];
 
@@ -113,7 +113,7 @@ function HomePage() {
           aiutano anche a sentirci meglio con noi stessi.
         </Typography>
       </Container> */}
-      <Container maxWidth={false}>
+      <Container maxWidth={false} disableGutters>
         <Typography
           component="h3"
           sx={{ padding: '24px', fontFamily: 'Roboto', fontSize: '30px' }}
