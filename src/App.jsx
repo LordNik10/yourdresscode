@@ -5,6 +5,7 @@ import './App.scss';
 import LoginProvider from './context/auth-context';
 import HomePage from './pages/Home/HomePage';
 import Products from './pages/Products/Products';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<Products />} />
           </Routes>
+          <Footer />
         </Router>
       </LoginProvider>
     </div>
