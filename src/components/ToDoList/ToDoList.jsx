@@ -1,5 +1,7 @@
-import { useState } from 'react';
 /* eslint-disable */
+import { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { style } from '@mui/system';
 
 function createToDo(text) {
   return {
@@ -48,11 +50,24 @@ function ToDoList() {
       <ul>
         {listOfToDo.map((el) => (
           <li key={el.id}>
-            <a href="#" onClick={() => handlecompleteToDo(el.id)}>
-              {el.text}
-              {el.isComplete && '--->done'}
-            </a>
-            <span onClick={() => handleDelete(el.id)}>Elimina</span>
+            {el.isComplete && (
+              <a
+                href="#"
+                style={{ textDecoration: 'line-through' }}
+                onClick={() => handlecompleteToDo(el.id)}
+              >
+                {el.text}
+              </a>
+            )}
+            {!el.isComplete && (
+              <a href="#" onClick={() => handlecompleteToDo(el.id)}>
+                {el.text}
+              </a>
+            )}
+
+            <span onClick={() => handleDelete(el.id)}>
+              <DeleteIcon />
+            </span>
           </li>
         ))}
       </ul>
