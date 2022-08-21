@@ -7,8 +7,7 @@ function Footer() {
       sx={{
         width: '100%',
         backgroundColor: theme.palette.primary.main,
-        position: 'absolute',
-        bottom: 0,
+        height: 100,
       }}
       maxWidth={false}
     >
