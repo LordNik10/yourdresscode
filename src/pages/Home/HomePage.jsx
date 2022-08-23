@@ -1,36 +1,14 @@
+import { useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import SliderImage from '../../components/SliderImage/SliderImage';
 import { theme } from '../../config/theme';
 import './HomePage.scss';
-import product1 from '../../assests/img-product1.jpg';
-import product2 from '../../assests/img-product2.jpg';
-import product3 from '../../assests/img-product3.jpg';
 import Strengths from '../../components/Strengths/Strengths';
 import quality from '../../assests/imgquality.png';
 import trasparency from '../../assests/imgtrasparency.png';
+import products from '../../helpers/products';
 // import imgHistory from '../../assests/img-history.png';
-
-const products = [
-  {
-    id: 1,
-    name: 'White T-Shirt',
-    img: product1,
-    text: 'This t-shirt is made from 100% cotton and is finished with a snug fit for a more flattering look. This versatile piece is timeless and will be the star of your wardrobe.',
-  },
-  {
-    id: 2,
-    name: 'Fantasy T-Shirt',
-    img: product2,
-    text: 'This shirt is all you need. A perfect summer tee for the holidays, or cool enough to wear year-round. With a soft cotton fabric and white background this t-shirt can be dressed up really easily!',
-  },
-  {
-    id: 3,
-    name: 'Adidas sweatshirt',
-    img: product3,
-    text: 'The Adidas Champion sweatshirt is made for long days on the field. This soft, stretch fabric with a hint of spandex is designed to keep you comfortable and firm through intense games. ',
-  },
-];
 
 const strengths = [
   {
@@ -48,6 +26,22 @@ const strengths = [
 ];
 
 function HomePage() {
+  const [page, setPage] = useState(1);
+
+  const totalPage = products.length / 3;
+
+  const handleIncrementPage = () => {
+    if (page < totalPage) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handleDecrementPage = () => {
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <>
       <Box className="container-homepage">
@@ -120,7 +114,14 @@ function HomePage() {
         >
           Our Products
         </Typography>
-        <SliderImage productsList={products} />
+        <SliderImage productsList={products} page={page} />
+        <button type="button" onClick={handleDecrementPage}>
+          {' '}
+          indietro
+        </button>
+        <button type="button" onClick={handleIncrementPage}>
+          avanti
+        </button>
         <Strengths strengthsList={strengths} />
       </Container>
     </>

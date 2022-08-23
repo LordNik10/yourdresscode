@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { theme } from '../../config/theme';
 
 function Footer() {
@@ -11,7 +11,12 @@ function Footer() {
       }}
       maxWidth={false}
     >
-      ciao
+      <Typography component="h4" sx={{ color: 'white' }}>
+        Informations
+      </Typography>
+      <Typography component="ul" sx={{ color: 'white' }}>
+        Tel: 04952952
+      </Typography>
     </Container>
   );
 }

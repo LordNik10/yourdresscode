@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 
-export default function ImgMediaCard({ productsList }) {
+export default function ImgMediaCard({ productsList, page }) {
   return (
     <Container
       sx={{
@@ -23,56 +23,60 @@ export default function ImgMediaCard({ productsList }) {
       }}
       maxWidth={false}
     >
-      {productsList.map((el) => (
-        <Card
-          sx={{
-            maxWidth: 345,
-            height: 460,
-            width: { xs: '80%', md: '33%' },
-            marginTop: '2%',
-          }}
-          key={el.id}
-        >
-          <Link to="/products">
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="220"
-              image={el.img}
-            />
-          </Link>
-
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {el.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {el.text}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">
-              <Link
-                to="/products"
-                style={{
-                  textDecoration: 'none',
-                  color: '#1976d2',
-                  border: '1px solid #1976d2',
-                  padding: '5px',
-                }}
-              >
-                Show Products
+      {productsList.map(
+        (el) =>
+          el.page === page && (
+            <Card
+              sx={{
+                maxWidth: 345,
+                height: 460,
+                width: { xs: '80%', md: '33%' },
+                marginTop: '2%',
+              }}
+              key={el.id}
+            >
+              <Link to="/products">
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="220"
+                  image={el.img}
+                />
               </Link>
-            </Button>
-          </CardActions>
-        </Card>
-      ))}
+
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {el.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {el.text}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">
+                  <Link
+                    to="/products"
+                    style={{
+                      textDecoration: 'none',
+                      color: '#1976d2',
+                      border: '1px solid #1976d2',
+                      padding: '5px',
+                    }}
+                  >
+                    Show Products
+                  </Link>
+                </Button>
+              </CardActions>
+            </Card>
+          ),
+      )}
     </Container>
   );
 }
 
 ImgMediaCard.defaultProps = {
   productsList: [],
+  page: 1,
 };
 
 ImgMediaCard.propTypes = {
@@ -84,4 +88,5 @@ ImgMediaCard.propTypes = {
       text: PropTypes.string,
     }),
   ),
+  page: PropTypes.number,
 };
