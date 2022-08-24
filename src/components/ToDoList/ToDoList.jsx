@@ -61,20 +61,14 @@ function ToDoList() {
                 }}
               >
                 <div className="container-li">
-                  {el.isComplete && (
-                    <span
-                      style={{
-                        textDecoration: 'line-through',
-                      }}
-                      className="todo-link"
-                    >
-                      {el.text}
-                    </span>
-                  )}
-                  {!el.isComplete && (
-                    <span className="todo-link">{el.text}</span>
-                  )}
-
+                  <span
+                    style={{
+                      textDecoration: el.isComplete ? 'line-through' : null,
+                    }}
+                    className="todo-link"
+                  >
+                    {el.text}
+                  </span>
                   <span className="delete-icon">
                     <DeleteIcon onClick={() => handleDelete(el.id)} />
                     <input
