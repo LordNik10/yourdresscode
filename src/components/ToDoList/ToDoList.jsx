@@ -25,11 +25,16 @@ function ToDoList() {
   };
 
   const handlecompleteToDo = (id) => {
+    console.log('ciao' + id);
     setListOfToDo((prevTodo) =>
       prevTodo.map((el) => {
         if (el.id === id) {
+          console.log('dentro if---->' + el.id + '====' + id);
+          console.log('1' + el.isComplete);
           el.isComplete = !el.isComplete;
+          console.log('2' + el.isComplete);
         }
+        console.log(el);
         return el;
       }),
     );
