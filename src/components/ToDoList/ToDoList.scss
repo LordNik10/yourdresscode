@@ -33,3 +33,9 @@
 .delete-icon {
   cursor: pointer;
 }
+
+.container-li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

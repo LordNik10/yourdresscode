@@ -59,28 +59,30 @@ function ToDoList() {
           <ul className="todo-list">
             {listOfToDo.map((el) => (
               <li key={el.id}>
-                {el.isComplete && (
-                  <span
-                    style={{ textDecoration: 'line-through' }}
-                    className="todo-link"
-                  >
-                    {el.text}
-                  </span>
-                )}
-                {!el.isComplete && <span className="todo-link">{el.text}</span>}
+                <div className="container-li">
+                  {el.isComplete && (
+                    <span
+                      style={{ textDecoration: 'line-through' }}
+                      className="todo-link"
+                    >
+                      {el.text}
+                    </span>
+                  )}
+                  {!el.isComplete && (
+                    <span className="todo-link">{el.text}</span>
+                  )}
 
-                <span
-                  onClick={() => handleDelete(el.id)}
-                  className="delete-icon"
-                >
-                  <DeleteIcon />
-                </span>
-                <span>
-                  <input
-                    type="checkbox"
-                    onChange={() => handlecompleteToDo(el.id)}
-                  />
-                </span>
+                  <span
+                    onClick={() => handleDelete(el.id)}
+                    className="delete-icon"
+                  >
+                    <DeleteIcon />
+                    <input
+                      type="checkbox"
+                      onChange={() => handlecompleteToDo(el.id)}
+                    />
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
