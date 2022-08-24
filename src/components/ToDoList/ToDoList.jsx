@@ -8,6 +8,7 @@ function createToDo(text) {
     text,
     id: Date.now(),
     isComplete: false,
+    background: 'transparent',
   };
 }
 
@@ -25,14 +26,15 @@ function ToDoList() {
   };
 
   const handlecompleteToDo = (id) => {
-    console.log('ciao' + id);
     setListOfToDo((prevTodo) =>
       prevTodo.map((el) => {
         if (el.id === id) {
-          console.log('dentro if---->' + el.id + '====' + id);
-          console.log('1' + el.isComplete);
           el.isComplete = !el.isComplete;
-          console.log('2' + el.isComplete);
+          if (el.background === 'transparent') {
+            el.background = 'lightgreen';
+          } else {
+            el.background = 'transparent';
+          }
         }
         console.log(el);
         return el;
@@ -58,11 +60,13 @@ function ToDoList() {
           />
           <ul className="todo-list">
             {listOfToDo.map((el) => (
-              <li key={el.id}>
+              <li key={el.id} style={{ backgroundColor: el.background }}>
                 <div className="container-li">
                   {el.isComplete && (
                     <span
-                      style={{ textDecoration: 'line-through' }}
+                      style={{
+                        textDecoration: 'line-through',
+                      }}
                       className="todo-link"
                     >
                       {el.text}
@@ -72,11 +76,8 @@ function ToDoList() {
                     <span className="todo-link">{el.text}</span>
                   )}
 
-                  <span
-                    onClick={() => handleDelete(el.id)}
-                    className="delete-icon"
-                  >
-                    <DeleteIcon />
+                  <span className="delete-icon">
+                    <DeleteIcon onClick={() => handleDelete(el.id)} />
                     <input
                       type="checkbox"
                       onChange={() => handlecompleteToDo(el.id)}
