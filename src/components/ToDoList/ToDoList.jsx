@@ -8,7 +8,6 @@ function createToDo(text) {
     text,
     id: Date.now(),
     isComplete: false,
-    background: 'transparent',
   };
 }
 
@@ -30,11 +29,6 @@ function ToDoList() {
       prevTodo.map((el) => {
         if (el.id === id) {
           el.isComplete = !el.isComplete;
-          if (el.background === 'transparent') {
-            el.background = 'lightgreen';
-          } else {
-            el.background = 'transparent';
-          }
         }
         console.log(el);
         return el;
@@ -60,7 +54,12 @@ function ToDoList() {
           />
           <ul className="todo-list">
             {listOfToDo.map((el) => (
-              <li key={el.id} style={{ backgroundColor: el.background }}>
+              <li
+                key={el.id}
+                style={{
+                  backgroundColor: el.isComplete ? 'lightgreen' : 'transparent',
+                }}
+              >
                 <div className="container-li">
                   {el.isComplete && (
                     <span
