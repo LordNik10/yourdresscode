@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { style } from '@mui/system';
+import './ToDoList.scss';
 
 function createToDo(text) {
   return {
@@ -41,36 +41,46 @@ function ToDoList() {
 
   return (
     <>
-      <input
-        type="text"
-        onKeyDown={handleToDo}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <ul>
-        {listOfToDo.map((el) => (
-          <li key={el.id}>
-            {el.isComplete && (
-              <a
-                href="#"
-                style={{ textDecoration: 'line-through' }}
-                onClick={() => handlecompleteToDo(el.id)}
-              >
-                {el.text}
-              </a>
-            )}
-            {!el.isComplete && (
-              <a href="#" onClick={() => handlecompleteToDo(el.id)}>
-                {el.text}
-              </a>
-            )}
+      <div className="container">
+        <div className="container-body">
+          <h1 className="title-webpage">To do List</h1>
+          <input
+            type="text"
+            onKeyDown={handleToDo}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="todo-input"
+          />
+          <ul className="todo-list">
+            {listOfToDo.map((el) => (
+              <li key={el.id}>
+                {el.isComplete && (
+                  <span
+                    style={{ textDecoration: 'line-through' }}
+                    className="todo-link"
+                  >
+                    {el.text}
+                  </span>
+                )}
+                {!el.isComplete && <span className="todo-link">{el.text}</span>}
 
-            <span onClick={() => handleDelete(el.id)}>
-              <DeleteIcon />
-            </span>
-          </li>
-        ))}
-      </ul>
+                <span
+                  onClick={() => handleDelete(el.id)}
+                  className="delete-icon"
+                >
+                  <DeleteIcon />
+                </span>
+                <span>
+                  <input
+                    type="checkbox"
+                    onChange={() => handlecompleteToDo(el.id)}
+                  />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
