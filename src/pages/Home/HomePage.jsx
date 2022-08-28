@@ -9,7 +9,7 @@ import './HomePage.scss';
 import Strengths from '../../components/Strengths/Strengths';
 import quality from '../../assests/imgquality.png';
 import trasparency from '../../assests/imgtrasparency.png';
-import products from '../../helpers/products';
+// import products from '../../helpers/products';
 // import imgHistory from '../../assests/img-history.png';
 
 const strengths = [
@@ -28,9 +28,9 @@ const strengths = [
 ];
 
 function HomePage() {
-  const [page, setPage] = useState(1);
+  const [minPage, setMinPage] = useState(0);
+  const [maxPage, setMaxPage] = useState(3);
   const [products1, setProducts1] = useState([]);
-  const totalPage = products.length / 3;
 
   useEffect(() => {
     async function fetchData() {
@@ -40,9 +40,9 @@ function HomePage() {
           throw new Error('Bad request');
         }
         const data = await res.json();
-        setProducts1(data);
         // eslint-disable-next-line
-        console.log(products1);
+        console.log(data);
+        setProducts1(data);
       } catch (error) {
         console.error(error);
       }
@@ -51,14 +51,16 @@ function HomePage() {
   }, []);
 
   const handleIncrementPage = () => {
-    if (page < totalPage) {
-      setPage((prevPage) => prevPage + 1);
+    if (minPage !== 3) {
+      setMaxPage((prevMaxPage) => prevMaxPage + 3);
+      setMinPage((preMinPage) => preMinPage + 3);
     }
   };
 
   const handleDecrementPage = () => {
-    if (page > 1) {
-      setPage((prevPage) => prevPage - 1);
+    if (minPage !== 0) {
+      setMaxPage((prevMaxPage) => prevMaxPage - 3);
+      setMinPage((preMinPage) => preMinPage - 3);
     }
   };
 
@@ -149,7 +151,7 @@ function HomePage() {
             onClick={handleDecrementPage}
             sx={{ cursor: 'pointer' }}
           />
-          <SliderImage productsList={products} page={page} />
+          <SliderImage productsList={products1.slice(minPage, maxPage)} />
           <ArrowForwardIosIcon
             onClick={handleIncrementPage}
             sx={{ cursor: 'pointer' }}
