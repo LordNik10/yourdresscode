@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -29,8 +29,26 @@ const strengths = [
 
 function HomePage() {
   const [page, setPage] = useState(1);
-
+  const [products1, setProducts1] = useState([]);
   const totalPage = products.length / 3;
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('https://fakestoreapi.com/products?limit=6');
+        if (!res.ok) {
+          throw new Error('Bad request');
+        }
+        const data = await res.json();
+        setProducts1(data);
+        // eslint-disable-next-line
+        console.log(products1);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleIncrementPage = () => {
     if (page < totalPage) {
