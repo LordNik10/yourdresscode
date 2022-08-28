@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import SliderImage from '../../components/SliderImage/SliderImage';
 import { theme } from '../../config/theme';
 import './HomePage.scss';
@@ -114,14 +116,28 @@ function HomePage() {
         >
           Our Products
         </Typography>
-        <SliderImage productsList={products} page={page} />
-        <button type="button" onClick={handleDecrementPage}>
-          {' '}
-          indietro
-        </button>
-        <button type="button" onClick={handleIncrementPage}>
-          avanti
-        </button>
+
+        <Container
+          maxWidth={false}
+          disableGutters
+          sx={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <ArrowBackIosIcon
+            onClick={handleDecrementPage}
+            sx={{ cursor: 'pointer' }}
+          />
+          <SliderImage productsList={products} page={page} />
+          <ArrowForwardIosIcon
+            onClick={handleIncrementPage}
+            sx={{ cursor: 'pointer' }}
+          />
+        </Container>
+
         <Strengths strengthsList={strengths} />
       </Container>
     </>

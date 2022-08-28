@@ -15,11 +15,13 @@ export default function ImgMediaCard({ productsList, page }) {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        width: '100%',
+        width: '70%',
         marginTop: '2%',
         justifyContent: 'center',
         flexDirection: { xs: 'column', md: 'row' },
         gap: '5%',
+        padding: 0,
+        margin: 0,
       }}
       maxWidth={false}
     >
