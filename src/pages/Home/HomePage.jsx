@@ -40,8 +40,6 @@ function HomePage() {
           throw new Error('Bad request');
         }
         const data = await res.json();
-        // eslint-disable-next-line
-        console.log(data);
         setProducts1(data);
       } catch (error) {
         console.error(error);
