@@ -2,6 +2,7 @@ import { Typography, Container, Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import BasicList from '../../components/List/BasicList';
 import { FirstLetterUpperCase } from '../../helpers/utility';
+import MediaCard from '../../components/ProductsList/ProductsList';
 
 function Products() {
   // eslint-disable-next-line
@@ -30,6 +31,7 @@ function Products() {
       <Typography component="h1">Products</Typography>
       <Box>
         <BasicList categories={categories} />
+        <MediaCard />
       </Box>
     </Container>
   );

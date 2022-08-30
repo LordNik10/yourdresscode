@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 
-export default function ImgMediaCard({ productsList }) {
+export default function ImgMediaCard({ productsList, isButton }) {
   return (
     <Container
       sx={{
@@ -52,21 +52,23 @@ export default function ImgMediaCard({ productsList }) {
               {el.description.substring(0, 80)}
             </Typography> */}
           </CardContent>
-          <CardActions>
-            <Button size="small">
-              <Link
-                to="/products"
-                style={{
-                  textDecoration: 'none',
-                  color: '#1976d2',
-                  border: '1px solid #1976d2',
-                  padding: '5px',
-                }}
-              >
-                Show Products
-              </Link>
-            </Button>
-          </CardActions>
+          {isButton && (
+            <CardActions>
+              <Button size="small">
+                <Link
+                  to="/products"
+                  style={{
+                    textDecoration: 'none',
+                    color: '#1976d2',
+                    border: '1px solid #1976d2',
+                    padding: '5px',
+                  }}
+                >
+                  Show Products
+                </Link>
+              </Button>
+            </CardActions>
+          )}
         </Card>
       ))}
     </Container>
@@ -75,6 +77,7 @@ export default function ImgMediaCard({ productsList }) {
 
 ImgMediaCard.defaultProps = {
   productsList: [],
+  isButton: false,
 };
 
 ImgMediaCard.propTypes = {
@@ -86,4 +89,5 @@ ImgMediaCard.propTypes = {
       text: PropTypes.string,
     }),
   ),
+  isButton: PropTypes.bool,
 };

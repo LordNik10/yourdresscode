@@ -149,7 +149,10 @@ function HomePage() {
             onClick={handleDecrementPage}
             sx={{ cursor: 'pointer' }}
           />
-          <SliderImage productsList={products1.slice(minPage, maxPage)} />
+          <SliderImage
+            productsList={products1.slice(minPage, maxPage)}
+            isButton
+          />
           <ArrowForwardIosIcon
             onClick={handleIncrementPage}
             sx={{ cursor: 'pointer' }}
