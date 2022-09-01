@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 function MediaCard() {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ function MediaCard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('https://fakestoreapi.com/products?limit=20');
+        const res = await fetch('https://fakestoreapi.com/products');
         if (!res.ok) {
           throw new Error('Something goes wrong');
         }
@@ -29,30 +30,46 @@ function MediaCard() {
   }, []);
 
   return (
-    <>
-      {products.map((el) => (
-        <Card sx={{ maxWidth: 345 }} key={el.id}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={el.image}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {el.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {el.price}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      ))}
-    </>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: '5%',
+      }}
+    >
+      {products.map(
+        (el) =>
+          el.category !== 'electronics' && (
+            <Card
+              sx={{ width: 350, height: 320, marginBottom: '2%' }}
+              key={el.id}
+            >
+              <CardMedia
+                component="img"
+                height="140"
+                image={el.image}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {el.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {el.price}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Share</Button>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Card>
+          ),
+      )}
+    </Container>
   );
 }
 

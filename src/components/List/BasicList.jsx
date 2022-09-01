@@ -11,13 +11,16 @@ export default function BasicList({ categories }) {
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List>
-          {categories.map((el) => (
-            <ListItem disablePadding key={el}>
-              <ListItemButton>
-                <ListItemText primary={el} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {categories.map(
+            (el) =>
+              el !== 'Electronics' && (
+                <ListItem disablePadding key={el}>
+                  <ListItemButton>
+                    <ListItemText primary={el} />
+                  </ListItemButton>
+                </ListItem>
+              ),
+          )}
         </List>
       </nav>
     </Box>
