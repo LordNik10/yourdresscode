@@ -1,5 +1,4 @@
-// import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,27 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-function MediaCard() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('https://fakestoreapi.com/products');
-        if (!res.ok) {
-          throw new Error('Something goes wrong');
-        }
-        const data = await res.json();
-        // eslint-disable-next-line
-        console.log(data);
-        setProducts(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
-
+function MediaCard({ products }) {
   return (
     <Container
       maxWidth={false}
@@ -75,17 +54,19 @@ function MediaCard() {
 
 export default MediaCard;
 
-// MediaCard.defaultProps = {
-//   products: [],
-// };
+MediaCard.defaultProps = {
+  products: [],
+};
 
-// MediaCard.propTypes = {
-//   products: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number,
-//       name: PropTypes.string,
-//       img: PropTypes.string,
-//       text: PropTypes.string,
-//     }),
-//   ),
-// };
+MediaCard.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      category: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    }),
+  ),
+};
