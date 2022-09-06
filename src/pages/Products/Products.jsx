@@ -84,7 +84,9 @@ function Products() {
 
   return (
     <Container maxWidth={false}>
-      <Typography component="h1">Products</Typography>
+      <Typography component="h1" sx={{ fontSize: '30px' }}>
+        Products
+      </Typography>
       <Box sx={{ marginTop: '5%', display: 'flex', alignItems: 'flex-start' }}>
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
           <nav aria-label="main mailbox folders">

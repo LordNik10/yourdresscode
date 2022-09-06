@@ -21,7 +21,7 @@ function MediaCard({ products }) {
         <Card
           sx={{
             width: 350,
-            height: 600,
+            height: 530,
             marginBottom: '2%',
             cursor: 'pointer',
           }}
