@@ -7,7 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 // import { FirstLetterUpperCase } from '../../helpers/utility';
 import MediaCard from '../../components/ProductsList/ProductsList';
 
-function Products() {
+function ProductsPage() {
   // eslint-disable-next-line
   const [categories, setCategories] = useState(['All Products']);
   const [products, setProducts] = useState([]);
@@ -118,4 +118,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductsPage;

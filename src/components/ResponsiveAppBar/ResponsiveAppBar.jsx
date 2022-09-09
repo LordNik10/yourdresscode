@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -107,7 +108,16 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  {
+                    // eslint-disable-next-line
+                    console.log(page.toLocaleLowerCase())
+                  }
+                  <Link
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    to={page === 'Home' ? `/` : `/${page.toLocaleLowerCase()}`}
+                  >
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -139,7 +149,12 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link
+                  style={{ textDecoration: 'none', color: 'white' }}
+                  to={page === 'Home' ? `/` : `/${page.toLocaleLowerCase()}`}
+                >
+                  {page}
+                </Link>
               </Button>
             ))}
           </Box>
