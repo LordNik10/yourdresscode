@@ -19,7 +19,11 @@ function MediaCard({ products }) {
       }}
     >
       {products.map((el) => (
-        <Link to={`/product/${el.id}`} key={el.id}>
+        <Link
+          style={{ textDecoration: 'none' }}
+          to={`/product/${el.id}`}
+          key={el.id}
+        >
           <Card
             sx={{
               width: 350,
