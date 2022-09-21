@@ -10,6 +10,21 @@ import {
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { theme } from '../../config/theme';
+import './Product.scss';
+
+// const obj = {
+//   textDecoration: 'none',
+//   color: 'orange',
+//   width: '180px',
+//   height: '60px',
+//   border: '1px solid orange',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   marginTop: '3%',
+//   fontSize: '18px',
+//   fontWeight: 'bold',
+// };
 
 function Product() {
   const { product } = useParams();
@@ -79,7 +94,7 @@ function Product() {
             {productInfo.price} $
           </Typography>
           <Stack direction="row" alignItems="center">
-            <Button onClick={handleDecrementProductCounter}>-</Button>
+            <Button onClick={handleDecrementProductCounter}>ciao</Button>
             <TextField value={productCounter} />
             <Button onClick={handleIncrementProductCounter}>+</Button>
           </Stack>

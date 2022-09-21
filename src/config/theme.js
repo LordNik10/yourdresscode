@@ -8,6 +8,7 @@ export const theme = createTheme({
     secondary: {
       main: '#d9893c',
       contrastText: '#000',
+      second: '#ffa500',
     },
     error: {
       main: '#d32f2f',
@@ -28,6 +29,9 @@ export const theme = createTheme({
     bgLight: {
       main: '#fff',
       contrastText: '#000',
+    },
+    btnColor: {
+      main: '#ffa500',
     },
   },
   breakpoints: {
