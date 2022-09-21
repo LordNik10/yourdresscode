@@ -87,19 +87,19 @@ theme.typography.h2 = {
 
 theme.typography.h3 = {
   [theme.breakpoints.up('xs')]: {
-    fontSize: '20px',
+    fontSize: '24px',
   },
   [theme.breakpoints.up('md')]: {
-    fontSize: '24px',
+    fontSize: '30px',
   },
 };
 
 theme.typography.h4 = {
   [theme.breakpoints.up('xs')]: {
-    fontSize: '18px',
+    fontSize: '20px',
   },
   [theme.breakpoints.up('md')]: {
-    fontSize: '20px',
+    fontSize: '24px',
   },
 };
 

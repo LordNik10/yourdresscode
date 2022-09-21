@@ -16,10 +16,12 @@ function Footer() {
       sx={{
         width: '100%',
         backgroundColor: theme.palette.primary.main,
-        height: 150,
+        height: { xs: 400, md: 150 },
         padding: '10px',
         display: 'flex',
+        // flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'flex-start',
+        flexWrap: { xs: 'wrap', md: 'nowrap' },
         justifyContent: 'center',
       }}
       maxWidth={false}

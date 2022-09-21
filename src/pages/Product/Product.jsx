@@ -4,14 +4,19 @@ import {
   Stack,
   Grid,
   Container,
+  TextField,
+  Button,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { theme } from '../../config/theme';
 
 function Product() {
-  const [productInfo, setProductInfo] = useState({});
   const { product } = useParams();
+
+  const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [productCounter, setProductCounter] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,6 +35,14 @@ function Product() {
     }
     fetchData();
   }, [product]);
+
+  const handleIncrementProductCounter = () => {
+    setProductCounter(productCounter + 1);
+  };
+
+  const handleDecrementProductCounter = () => {
+    setProductCounter(productCounter - 1);
+  };
 
   if (isLoading) {
     <Stack
@@ -56,10 +69,20 @@ function Product() {
           <img src={productInfo.image} alt="product" style={{ width: '70%' }} />
         </Grid>
         <Grid item xs={7}>
-          <Typography component="h1">{productInfo.title}</Typography>
-          <Typography component="p" fontSize="16px">
+          <Typography component="h3" fontSize={theme.typography.h3}>
+            {productInfo.title}
+          </Typography>
+          <Typography component="p" fontSize={theme.typography.body1}>
             {productInfo.description}
           </Typography>
+          <Typography component="h4" fontSize={theme.typography.h4}>
+            {productInfo.price} $
+          </Typography>
+          <Stack direction="row" alignItems="center">
+            <Button onClick={handleDecrementProductCounter}>-</Button>
+            <TextField value={productCounter} />
+            <Button onClick={handleIncrementProductCounter}>+</Button>
+          </Stack>
         </Grid>
       </Grid>
     </Container>
