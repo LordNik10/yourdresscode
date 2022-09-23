@@ -26,6 +26,18 @@ import './Product.scss';
 //   fontWeight: 'bold',
 // };
 
+const btnStyle = {
+  backgroundColor: 'none',
+  outline: '1px solid orange',
+  color: 'orange',
+  fontSize: '20px',
+  height: '56px',
+  ':hover': {
+    backgroundColor: 'orange',
+    color: 'white',
+  },
+};
+
 function Product() {
   const { product } = useParams();
 
@@ -93,10 +105,19 @@ function Product() {
           <Typography component="h4" fontSize={theme.typography.h4}>
             {productInfo.price} $
           </Typography>
-          <Stack direction="row" alignItems="center">
-            <Button onClick={handleDecrementProductCounter}>ciao</Button>
-            <TextField value={productCounter} />
-            <Button onClick={handleIncrementProductCounter}>+</Button>
+          <Stack direction="row" alignItems="center" height="100px" spacing={3}>
+            <Button onClick={handleDecrementProductCounter} sx={btnStyle}>
+              -
+            </Button>
+            <TextField
+              value={productCounter}
+              inputProps={{
+                readOnly: true,
+              }}
+            />
+            <Button onClick={handleIncrementProductCounter} sx={btnStyle}>
+              +
+            </Button>
           </Stack>
         </Grid>
       </Grid>
