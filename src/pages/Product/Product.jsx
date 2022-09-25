@@ -119,6 +119,22 @@ function Product() {
               +
             </Button>
           </Stack>
+          <Button
+            sx={{
+              backgroundColor: 'none',
+              outline: '1px solid orange',
+              color: 'orange',
+              fontSize: '15px',
+              height: '35px',
+              ':hover': {
+                backgroundColor: 'orange',
+                color: 'white',
+              },
+              width: '200px',
+            }}
+          >
+            Add Cart
+          </Button>
         </Grid>
       </Grid>
     </Container>
