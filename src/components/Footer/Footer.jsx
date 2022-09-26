@@ -19,10 +19,11 @@ function Footer() {
         height: { xs: 400, md: 150 },
         padding: '10px',
         display: 'flex',
-        // flexDirection: { xs: 'column', md: 'row' },
+        flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'flex-start',
-        flexWrap: { xs: 'wrap', md: 'nowrap' },
-        justifyContent: 'center',
+        // flexWrap: { xs: 'wrap', md: 'nowrap' },
+        justifyContent: { xs: 'space-around', md: 'center' },
+        marginTop: 'auto',
       }}
       maxWidth={false}
     >
