@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ListItem from '../../components/ListItem/ListItem';
 import { theme } from '../../config/theme';
 import './Product.scss';
 
@@ -37,6 +38,29 @@ const btnStyle = {
     color: 'white',
   },
 };
+
+const sizes = [
+  {
+    id: 1,
+    name: 'XS',
+  },
+  {
+    id: 2,
+    name: 'S',
+  },
+  {
+    id: 3,
+    name: 'M',
+  },
+  {
+    id: 4,
+    name: 'L',
+  },
+  {
+    id: 5,
+    name: 'XL',
+  },
+];
 
 function Product() {
   const { product } = useParams();
@@ -118,6 +142,9 @@ function Product() {
             <Button onClick={handleIncrementProductCounter} sx={btnStyle}>
               +
             </Button>
+          </Stack>
+          <Stack direction="row" marginBottom={theme.spacing(3)}>
+            <ListItem listItem={sizes} label="Sizes" />
           </Stack>
           <Button
             sx={{
