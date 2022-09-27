@@ -63,7 +63,7 @@ function HomePage() {
   };
 
   return (
-    <>
+    <Container disableGutters maxWidth={false}>
       <Box className="container-homepage">
         <Typography
           component="h1"
@@ -161,7 +161,7 @@ function HomePage() {
 
         <Strengths strengthsList={strengths} />
       </Container>
-    </>
+    </Container>
   );
 }
 
