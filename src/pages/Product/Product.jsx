@@ -62,6 +62,29 @@ const sizes = [
   },
 ];
 
+const colors = [
+  {
+    id: 1,
+    name: 'Red',
+  },
+  {
+    id: 2,
+    name: 'White',
+  },
+  {
+    id: 3,
+    name: 'Black',
+  },
+  {
+    id: 4,
+    name: 'Blue',
+  },
+  {
+    id: 5,
+    name: 'Yellow',
+  },
+];
+
 function Product() {
   const { product } = useParams();
 
@@ -143,8 +166,9 @@ function Product() {
               +
             </Button>
           </Stack>
-          <Stack direction="row" marginBottom={theme.spacing(3)}>
+          <Stack direction="row" marginBottom={theme.spacing(3)} spacing={3}>
             <ListItem listItem={sizes} label="Sizes" />
+            <ListItem listItem={colors} label="Color" />
           </Stack>
           <Button
             sx={{
