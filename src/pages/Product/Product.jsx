@@ -166,10 +166,14 @@ function Product() {
               +
             </Button>
           </Stack>
-          <Stack direction="row" marginBottom={theme.spacing(3)} spacing={3}>
-            <ListItem listItem={sizes} label="Sizes" />
-            <ListItem listItem={colors} label="Color" />
-          </Stack>
+          {productInfo.category === `men's clothing` ||
+          productInfo.category === `women's clothing` ? (
+            <Stack direction="row" marginBottom={theme.spacing(3)} spacing={3}>
+              <ListItem listItem={sizes} label="Sizes" />
+              <ListItem listItem={colors} label="Color" />
+            </Stack>
+          ) : null}
+
           <Button
             sx={{
               backgroundColor: 'none',
