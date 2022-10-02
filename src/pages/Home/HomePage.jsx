@@ -40,8 +40,6 @@ function HomePage() {
           throw new Error('Bad request');
         }
         const data = await res.json();
-        // eslint-disable-next-line
-        console.log(data);
         setProducts1(data);
       } catch (error) {
         console.error(error);
@@ -65,7 +63,7 @@ function HomePage() {
   };
 
   return (
-    <>
+    <Container disableGutters maxWidth={false}>
       <Box className="container-homepage">
         <Typography
           component="h1"
@@ -151,7 +149,10 @@ function HomePage() {
             onClick={handleDecrementPage}
             sx={{ cursor: 'pointer' }}
           />
-          <SliderImage productsList={products1.slice(minPage, maxPage)} />
+          <SliderImage
+            productsList={products1.slice(minPage, maxPage)}
+            isButton
+          />
           <ArrowForwardIosIcon
             onClick={handleIncrementPage}
             sx={{ cursor: 'pointer' }}
@@ -160,7 +161,7 @@ function HomePage() {
 
         <Strengths strengthsList={strengths} />
       </Container>
-    </>
+    </Container>
   );
 }
 
