@@ -1,4 +1,4 @@
-import { Typography, Stack, TextField } from '@mui/material';
+import { Typography, Stack, TextField, Button } from '@mui/material';
 
 function Login() {
   return (
@@ -8,10 +8,19 @@ function Login() {
       alignItems="center"
       height="100%"
     >
-      <Stack flexDirection="column" alignItems="center" width="300px">
-        <Typography component="h1">Login</Typography>
-        <TextField label="Username" variant="outlined" />
-      </Stack>
+      <form>
+        <Stack
+          flexDirection="column"
+          alignItems="center"
+          width="300px"
+          spacing={3}
+        >
+          <Typography component="h1">Login</Typography>
+          <TextField label="Username" variant="outlined" />
+          <TextField label="Password" variant="outlined" />
+          <Button>Login</Button>
+        </Stack>
+      </form>
     </Stack>
   );
 }
