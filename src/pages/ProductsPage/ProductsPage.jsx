@@ -90,6 +90,9 @@ function ProductsPage() {
       <Box sx={{ marginTop: '5%', display: 'flex', alignItems: 'flex-start' }}>
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
           <nav aria-label="main mailbox folders">
+            <Typography component="h2" sx={{ fontSize: '25px' }}>
+              categories
+            </Typography>
             <List>
               {categories.map((el) => (
                 <ListItem disablePadding key={el}>
