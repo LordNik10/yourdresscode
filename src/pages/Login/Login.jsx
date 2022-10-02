@@ -15,7 +15,9 @@ function Login() {
           width="300px"
           spacing={3}
         >
-          <Typography component="h1">Login</Typography>
+          <Typography component="h1" fontSize="30px">
+            Login
+          </Typography>
           <TextField label="Username" variant="outlined" />
           <TextField label="Password" variant="outlined" />
           <Button>Login</Button>
