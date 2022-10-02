@@ -168,16 +168,18 @@ function ResponsiveAppBar() {
               )}
 
               {!isLogged && (
-                <Typography
-                  textAlign="center"
-                  sx={{
-                    color: 'white',
-                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-                    fontWeight: '500',
-                  }}
-                >
-                  Login
-                </Typography>
+                <Link to="login">
+                  <Typography
+                    textAlign="center"
+                    sx={{
+                      color: 'white',
+                      fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                      fontWeight: '500',
+                    }}
+                  >
+                    Login
+                  </Typography>
+                </Link>
               )}
             </IconButton>
             {isLogged && (

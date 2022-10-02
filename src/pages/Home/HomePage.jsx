@@ -86,47 +86,11 @@ function HomePage() {
         >
           Il tuo stile a portata di mano
         </Typography>
-        {/* <Button
-          variant="outlined"
-          sx={{
-            borderColor: 'orange',
-            color: 'orange',
-            marginTop: '10%',
-            width: '180px',
-            height: '60px',
-            padding: '0',
-            ':hover': {
-              backgroundColor: theme.palette.secondary.main,
-              border: theme.palette.secondary.main,
-              color: 'white',
-              opacity: '0.8',
-            },
-          }}
-          className="ciao"
-        > */}
         <Link to="/products" className="styled-link">
           Show Products
         </Link>
-        {/* </Button> */}
       </Box>
-      {/* <Container
-        sx={{
-          marginTop: '5%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '5%',
-        }}
-      >
-        <img src={imgHistory} alt="img history" />
-        <Typography component="p" sx={{ width: '25%' }}>
-          Siamo un marchio di abbigliamento di lusso con la missione e lo scopo
-          di creare capi versatili, di classe e senza tempo, fatti per durare
-          nel tempo. I nostri capi di abbigliamento, accessori e scarpe non si
-          limitano a rendere più belle tutte le piccole cose della vita, ma ci
-          aiutano anche a sentirci meglio con noi stessi.
-        </Typography>
-      </Container> */}
+
       <Container maxWidth={false} disableGutters>
         <Typography
           component="h3"
