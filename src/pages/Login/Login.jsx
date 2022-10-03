@@ -1,4 +1,5 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
+import { btnStyle } from '../../config/utility';
 
 function Login() {
   return (
@@ -8,7 +9,12 @@ function Login() {
       alignItems="center"
       height="100%"
     >
-      <form>
+      <form
+        style={{
+          boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
+          padding: '20px',
+        }}
+      >
         <Stack
           flexDirection="column"
           alignItems="center"
@@ -18,9 +24,15 @@ function Login() {
           <Typography component="h1" fontSize="30px">
             Login
           </Typography>
-          <TextField label="Username" variant="outlined" />
+          <TextField
+            sx={{
+              borderColor: 'orange',
+            }}
+            label="Username"
+            variant="outlined"
+          />
           <TextField label="Password" variant="outlined" />
-          <Button>Login</Button>
+          <Button sx={btnStyle}>Login</Button>
         </Stack>
       </form>
     </Stack>

@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom';
 import ListItem from '../../components/ListItem/ListItem';
 import { theme } from '../../config/theme';
 import './Product.scss';
+import { btnStyle } from '../../config/utility';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -26,18 +27,6 @@ import './Product.scss';
 //   fontSize: '18px',
 //   fontWeight: 'bold',
 // };
-
-const btnStyle = {
-  backgroundColor: 'none',
-  outline: '1px solid orange',
-  color: 'orange',
-  fontSize: '20px',
-  height: '56px',
-  ':hover': {
-    backgroundColor: 'orange',
-    color: 'white',
-  },
-};
 
 const sizes = [
   {
