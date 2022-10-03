@@ -24,13 +24,7 @@ function Login() {
           <Typography component="h1" fontSize="30px">
             Login
           </Typography>
-          <TextField
-            sx={{
-              borderColor: 'orange',
-            }}
-            label="Username"
-            variant="outlined"
-          />
+          <TextField label="Username" variant="outlined" />
           <TextField label="Password" variant="outlined" />
           <Button sx={btnStyle}>Login</Button>
         </Stack>
