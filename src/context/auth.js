@@ -1,38 +1,41 @@
-import React, { useState, useMemo, createContext, useContext } from 'react';
+import React, {
+  useState,
+  useMemo,
+  createContext,
+  useContext,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 
-const AuthContext = createContext(false);
-const AuthContextUpdate = createContext();
+const AuthContext = createContext({
+  isLogged: false,
+  handleLogin: () => {},
+});
 
 export function UseAuthContext() {
   return useContext(AuthContext);
 }
 
-export function UseAuthContextUpdate() {
-  return useContext(AuthContextUpdate);
-}
-
 function LoginProvider({ children }) {
-  const [isLogged, setIsLogged] = useState(false);
-  const loginProviderValue = useMemo(
-    () => ({ isLogged, setIsLogged }),
-    [isLogged, setIsLogged],
+  const [login, setIsLogged] = useState({
+    isLogged: false,
+    handleLogin: () => {},
+  });
+
+  function handleLogin(loginValue) {
+    setIsLogged((prevValue) => ({ prevValue, isLogged: loginValue }));
+  }
+
+  const memoizedHandleLogin = useCallback(handleLogin, []);
+
+  const handleLoginMemo = useMemo(
+    () => ({ isLogged: login.isLogged, handleLogin: memoizedHandleLogin }),
+    [login, memoizedHandleLogin],
   );
-  function handleLogin() {
-    setIsLogged(true);
-  }
-
-  function handleLogout() {
-    setIsLogged(false);
-  }
-
-  const handleLoginMemo = useMemo(() => ({ handleLogin, handleLogout }), []);
 
   return (
-    <AuthContext.Provider value={loginProviderValue}>
-      <AuthContextUpdate.Provider value={handleLoginMemo}>
-        {children}
-      </AuthContextUpdate.Provider>
+    <AuthContext.Provider value={handleLoginMemo}>
+      {children}
     </AuthContext.Provider>
   );
 }

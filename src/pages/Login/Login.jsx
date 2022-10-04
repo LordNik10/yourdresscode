@@ -1,7 +1,17 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
 import { btnStyle } from '../../config/utility';
+import { UseAuthContext } from '../../context/auth';
 
 function Login() {
+  const { handleLogin } = UseAuthContext();
+
+  function onSubmiteHandleLogin(e) {
+    e.preventDefault();
+    // eslint-disable-next-line
+    console.log('ciao');
+    handleLogin(true);
+  }
+
   return (
     <Stack
       flexDirection="row"
@@ -14,6 +24,7 @@ function Login() {
           boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
           padding: '20px',
         }}
+        onSubmit={onSubmiteHandleLogin}
       >
         <Stack
           flexDirection="column"

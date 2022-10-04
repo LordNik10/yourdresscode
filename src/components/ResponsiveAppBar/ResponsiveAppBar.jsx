@@ -25,6 +25,8 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const { isLogged } = UseAuthContext();
+  // eslint-disable-next-line
+  console.log(isLogged);
   // const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
@@ -161,6 +163,10 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              {
+                // eslint-disable-next-line
+                console.log(isLogged)
+              }
               {isLogged && (
                 <Tooltip title="Open settings">
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
