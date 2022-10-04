@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ResponsiveAppBar from './components/ResponsiveAppBar/ResponsiveAppBar';
 import './App.scss';
-import LoginProvider from './context/auth-context';
+import LoginProvider from './context/auth';
 import HomePage from './pages/Home/HomePage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import Footer from './components/Footer/Footer';

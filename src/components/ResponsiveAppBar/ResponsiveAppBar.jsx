@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
-import { UseAuthContext } from '../../context/auth-context';
+import { UseAuthContext } from '../../context/auth';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
