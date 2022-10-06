@@ -35,11 +35,18 @@ function Login() {
           <Typography component="h1" fontSize="30px">
             Login
           </Typography>
-          <TextField label="Username" variant="outlined" />
+          <TextField
+            autoComplete="username"
+            placeholder="username"
+            label="Username"
+            variant="outlined"
+          />
           <TextField label="Password" variant="outlined" type="password" />
           {
             // eslint-disable-next-line
-            <Button sx={btnStyle}>Login</Button>
+            <Button sx={btnStyle} type="submit">
+              Login
+            </Button>
           }
         </Stack>
       </form>
