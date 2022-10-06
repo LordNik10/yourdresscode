@@ -1,9 +1,9 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
 import { btnStyle } from '../../config/utility';
-import { UseAuthContext } from '../../context/auth';
+import { useAuthContext } from '../../context/auth';
 
 function Login() {
-  const { handleLogin } = UseAuthContext();
+  const { handleLogin } = useAuthContext();
 
   function onSubmiteHandleLogin(e) {
     e.preventDefault();
@@ -20,11 +20,11 @@ function Login() {
       height="100%"
     >
       <form
+        onSubmit={onSubmiteHandleLogin}
         style={{
           boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
           padding: '20px',
         }}
-        onSubmit={onSubmiteHandleLogin}
       >
         <Stack
           flexDirection="column"
@@ -36,8 +36,11 @@ function Login() {
             Login
           </Typography>
           <TextField label="Username" variant="outlined" />
-          <TextField label="Password" variant="outlined" />
-          <Button sx={btnStyle}>Login</Button>
+          <TextField label="Password" variant="outlined" type="password" />
+          {
+            // eslint-disable-next-line
+            <Button sx={btnStyle}>Login</Button>
+          }
         </Stack>
       </form>
     </Stack>

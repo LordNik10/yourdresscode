@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
-import { UseAuthContext } from '../../context/auth';
+import { useAuthContext } from '../../context/auth';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -24,7 +24,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const { isLogged } = UseAuthContext();
+  const { isLogged } = useAuthContext();
   // eslint-disable-next-line
   console.log(isLogged);
   // const setIsLogged = UseAuthContextUpdate();
@@ -174,7 +174,7 @@ function ResponsiveAppBar() {
               )}
 
               {!isLogged && (
-                <Link to="login">
+                <Link to="login" style={{ textDecoration: 'none' }}>
                   <Typography
                     textAlign="center"
                     sx={{

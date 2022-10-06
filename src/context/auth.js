@@ -12,7 +12,7 @@ const AuthContext = createContext({
   handleLogin: () => {},
 });
 
-export function UseAuthContext() {
+export function useAuthContext() {
   return useContext(AuthContext);
 }
 
