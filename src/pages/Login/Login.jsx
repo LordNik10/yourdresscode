@@ -40,14 +40,20 @@ function Login() {
             placeholder="username"
             label="Username"
             variant="outlined"
+            autoFocus
+            required
           />
-          <TextField label="Password" variant="outlined" type="password" />
-          {
-            // eslint-disable-next-line
-            <Button sx={btnStyle} type="submit">
-              Login
-            </Button>
-          }
+          <TextField
+            label="Password"
+            autoComplete="Password"
+            placeholder="Password"
+            variant="outlined"
+            type="password"
+            required
+          />
+          <Button sx={btnStyle} type="submit">
+            Login
+          </Button>
         </Stack>
       </form>
     </Stack>
