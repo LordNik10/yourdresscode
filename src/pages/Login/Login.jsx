@@ -1,16 +1,55 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
+import { useState } from 'react';
 import { btnStyle } from '../../config/utility';
 import { useAuthContext } from '../../context/auth';
 
 function Login() {
+  // username: johnd
+  // password: m38rmF$
   const { handleLogin } = useAuthContext();
+  const [userInfo, setUserInfo] = useState({});
+  const [formInfo, setFormInfo] = useState({});
 
-  function onSubmiteHandleLogin(e) {
+  async function onSubmiteHandleLogin(e) {
     e.preventDefault();
     // eslint-disable-next-line
     console.log('ciao');
-    handleLogin(true);
+    try {
+      // eslint-disable-next-line
+      const res = await fetch('https://fakestoreapi.com/users/1');
+
+      // if (!res.ok) {
+      //   throw new Error('Bad request');
+      // }
+      const data = await res.json();
+
+      setUserInfo(data);
+      // eslint-disable-next-line
+      console.log(formInfo.username, userInfo.username);
+      // eslint-disable-next-line
+      console.log(formInfo.password, userInfo.password);
+      if (
+        formInfo.username === userInfo.username &&
+        formInfo.password === userInfo.password
+      ) {
+        handleLogin(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
+
+  const handleOnChangeUsername = (e) => {
+    setFormInfo((prev) => ({ ...prev, username: e.target.value }));
+    // eslint-disable-next-line
+    console.log(e.target.value);
+  };
+
+  const handleOnChangePassword = (e) => {
+    setFormInfo((prev) => ({ ...prev, password: e.target.value }));
+    // eslint-disable-next-line
+    console.log(e.target.value);
+  };
 
   return (
     <Stack
@@ -41,7 +80,8 @@ function Login() {
             label="Username"
             variant="outlined"
             autoFocus
-            required
+            onChange={(e) => handleOnChangeUsername(e)}
+            // required
           />
           <TextField
             label="Password"
@@ -49,7 +89,8 @@ function Login() {
             placeholder="Password"
             variant="outlined"
             type="password"
-            required
+            onChange={(e) => handleOnChangePassword(e)}
+            // required
           />
           <Button sx={btnStyle} type="submit">
             Login
