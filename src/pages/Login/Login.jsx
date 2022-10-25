@@ -5,37 +5,23 @@ import { useAuthContext } from '../../context/auth';
 
 function Login() {
   // username: johnd
-  // password: m38rmF$
+  // password: yourdresscode3
   const { handleLogin } = useAuthContext();
-  const [userInfo, setUserInfo] = useState({});
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [formInfo, setFormInfo] = useState({});
 
   async function onSubmiteHandleLogin(e) {
     e.preventDefault();
     // eslint-disable-next-line
     console.log('ciao');
-    try {
-      // eslint-disable-next-line
-      const res = await fetch('https://fakestoreapi.com/users/1');
 
-      // if (!res.ok) {
-      //   throw new Error('Bad request');
-      // }
-      const data = await res.json();
-
-      setUserInfo(data);
-      // eslint-disable-next-line
-      console.log(formInfo.username, userInfo.username);
-      // eslint-disable-next-line
-      console.log(formInfo.password, userInfo.password);
-      if (
-        formInfo.username === userInfo.username &&
-        formInfo.password === userInfo.password
-      ) {
-        handleLogin(true);
-      }
-    } catch (error) {
-      console.error(error);
+    if (
+      formInfo.username === 'johnd' &&
+      formInfo.password === 'yourdresscode3'
+    ) {
+      handleLogin(true);
+    } else {
+      setIsPasswordValid(true);
     }
   }
 
@@ -73,6 +59,9 @@ function Login() {
         >
           <Typography component="h1" fontSize="30px">
             Login
+          </Typography>
+          <Typography component="p" fontSize="20px">
+            {isPasswordValid && 'password or username are not valid'}
           </Typography>
           <TextField
             autoComplete="username"
