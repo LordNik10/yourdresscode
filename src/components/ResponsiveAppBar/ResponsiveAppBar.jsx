@@ -24,7 +24,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const { isLogged } = useAuthContext();
+  const { isLogged, handleLogin } = useAuthContext();
   // eslint-disable-next-line
   console.log(isLogged);
   // const setIsLogged = UseAuthContextUpdate();
@@ -47,6 +47,9 @@ function ResponsiveAppBar() {
   // const madeLogin = () => {
   //   setIsLogged.handleLogin();
   // };
+  const handleLogout = () => {
+    handleLogin(false);
+  };
 
   return (
     <AppBar
@@ -163,10 +166,6 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {
-                // eslint-disable-next-line
-                console.log(isLogged)
-              }
               {isLogged && (
                 <Tooltip title="Open settings">
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -207,7 +206,11 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    {setting === 'Logout' ? (
+                      <Typography onClick={handleLogout}>Logout</Typography>
+                    ) : (
+                      <Typography textAlign="center">{setting}</Typography>
+                    )}
                   </MenuItem>
                 ))}
               </Menu>
