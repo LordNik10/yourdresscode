@@ -9,6 +9,7 @@ import './HomePage.scss';
 import Strengths from '../../components/Strengths/Strengths';
 import quality from '../../assests/imgquality.png';
 import trasparency from '../../assests/imgtrasparency.png';
+import { useLastPage } from '../../context/lastPage';
 // import products from '../../helpers/products';
 // import imgHistory from '../../assests/img-history.png';
 
@@ -31,6 +32,11 @@ function HomePage() {
   const [minPage, setMinPage] = useState(0);
   const [maxPage, setMaxPage] = useState(3);
   const [products1, setProducts1] = useState([]);
+  const { handleChangePage } = useLastPage();
+
+  useEffect(() => {
+    handleChangePage('/');
+  });
 
   useEffect(() => {
     async function fetchData() {

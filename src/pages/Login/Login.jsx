@@ -1,12 +1,16 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { btnStyle } from '../../config/utility';
 import { useAuthContext } from '../../context/auth';
+import { useLastPage } from '../../context/lastPage';
 
 function Login() {
   // username: johnd
   // password: yourdresscode3
   const { handleLogin } = useAuthContext();
+  const { lastPage } = useLastPage();
+  const navigate = useNavigate();
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [formInfo, setFormInfo] = useState({});
 
@@ -20,6 +24,7 @@ function Login() {
       formInfo.password === 'yourdresscode3'
     ) {
       handleLogin(true);
+      navigate(lastPage);
     } else {
       setIsPasswordValid(true);
     }
@@ -60,7 +65,7 @@ function Login() {
           <Typography component="h1" fontSize="30px">
             Login
           </Typography>
-          <Typography component="p" fontSize="20px">
+          <Typography component="p" fontSize="12px" color="red">
             {isPasswordValid && 'password or username are not valid'}
           </Typography>
           <TextField

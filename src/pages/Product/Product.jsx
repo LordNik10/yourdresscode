@@ -13,6 +13,7 @@ import ListItem from '../../components/ListItem/ListItem';
 import { theme } from '../../config/theme';
 import './Product.scss';
 import { btnStyle } from '../../config/utility';
+import { useLastPage } from '../../context/lastPage';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -80,6 +81,12 @@ function Product() {
   const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
+
+  const { handleChangePage } = useLastPage();
+
+  useEffect(() => {
+    handleChangePage(`/product/${product}`);
+  });
 
   useEffect(() => {
     async function fetchData() {

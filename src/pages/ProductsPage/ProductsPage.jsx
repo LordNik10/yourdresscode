@@ -6,11 +6,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 // import { FirstLetterUpperCase } from '../../helpers/utility';
 import MediaCard from '../../components/ProductsList/ProductsList';
+import { useLastPage } from '../../context/lastPage';
 
 function ProductsPage() {
   // eslint-disable-next-line
   const [categories, setCategories] = useState(['All Products']);
   const [products, setProducts] = useState([]);
+
+  const { handleChangePage } = useLastPage();
+
+  useEffect(() => {
+    handleChangePage('/products');
+  });
 
   useEffect(() => {
     async function fetchData() {
