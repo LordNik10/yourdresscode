@@ -15,7 +15,6 @@ function Strengths({ strengthsList }) {
         marginTop: '2%',
         gap: '5%',
         backgroundColor: '#f4f8fb',
-        height: 500,
       }}
       disableGutters
       maxWidth={false}
