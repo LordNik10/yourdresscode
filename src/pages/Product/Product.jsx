@@ -117,7 +117,9 @@ function Product() {
   };
 
   const addItemToCart = () => {
-    addItem(productInfo);
+    if (productCounter !== 0) {
+      addItem({ productInfo, productCounter });
+    }
   };
 
   if (isLoading) {

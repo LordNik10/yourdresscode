@@ -13,6 +13,9 @@ import FaceIcon from '@mui/icons-material/Face';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import LensIcon from '@mui/icons-material/Lens';
+import { Stack } from '@mui/material';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
@@ -166,29 +169,64 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {isLogged && (
-                <Tooltip title="Open settings">
-                  {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                  <FaceIcon fontSize="large" style={{ color: 'white' }} />
-                </Tooltip>
-              )}
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <Stack direction="row" sx={{ position: 'relative' }}>
+                <ShoppingCartIcon />
+                <Container
+                  maxWidth={false}
+                  disableGutters
+                  style={{
+                    fontSize: '15px',
+                    position: 'absolute',
+                    left: '15px',
+                    top: '-6px',
+                    color: 'white',
+                    backgroundColor: 'red',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '20px',
+                    height: '20px',
+                  }}
+                >
+                  10
+                </Container>
+                {/* <LensIcon
+                  style={{
+                    fontSize: '15px',
+                    position: 'absolute',
+                    left: '15px',
+                    top: '-6px',
+                    color: 'red',
+                  }}
+                >
+                  10
+                </LensIcon> */}
+              </Stack>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {isLogged && (
+                  <Tooltip title="Open settings">
+                    {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                    <FaceIcon fontSize="large" style={{ color: 'white' }} />
+                  </Tooltip>
+                )}
 
-              {!isLogged && (
-                <Link to="login" style={{ textDecoration: 'none' }}>
-                  <Typography
-                    textAlign="center"
-                    sx={{
-                      color: 'white',
-                      fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-                      fontWeight: '500',
-                    }}
-                  >
-                    Login
-                  </Typography>
-                </Link>
-              )}
-            </IconButton>
+                {!isLogged && (
+                  <Link to="login" style={{ textDecoration: 'none' }}>
+                    <Typography
+                      textAlign="center"
+                      sx={{
+                        color: 'white',
+                        fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                        fontWeight: '500',
+                      }}
+                    >
+                      Login
+                    </Typography>
+                  </Link>
+                )}
+              </IconButton>
+            </Stack>
             {isLogged && (
               <Menu
                 sx={{ mt: '45px' }}
