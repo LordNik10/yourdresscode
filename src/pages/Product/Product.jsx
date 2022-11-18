@@ -14,6 +14,7 @@ import { theme } from '../../config/theme';
 import './Product.scss';
 import { btnStyle } from '../../config/utility';
 import { useLastPage } from '../../context/lastPage';
+import { useCartContext } from '../../context/CartContext';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -82,6 +83,7 @@ function Product() {
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
 
+  const { addItem } = useCartContext();
   const { handleChangePage } = useLastPage();
 
   useEffect(() => {
@@ -112,6 +114,10 @@ function Product() {
 
   const handleDecrementProductCounter = () => {
     setProductCounter(productCounter - 1);
+  };
+
+  const addItemToCart = () => {
+    addItem(productInfo);
   };
 
   if (isLoading) {
@@ -183,6 +189,7 @@ function Product() {
               },
               width: '200px',
             }}
+            onClick={addItemToCart}
           >
             Add Cart
           </Button>

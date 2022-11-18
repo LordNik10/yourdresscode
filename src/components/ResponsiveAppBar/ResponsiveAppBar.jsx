@@ -170,7 +170,7 @@ function ResponsiveAppBar() {
               {isLogged && (
                 <Tooltip title="Open settings">
                   {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                  <FaceIcon fontSize="large" color="white" />
+                  <FaceIcon fontSize="large" style={{ color: 'white' }} />
                 </Tooltip>
               )}
 
