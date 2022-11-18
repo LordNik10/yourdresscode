@@ -12,6 +12,9 @@ import { useParams } from 'react-router-dom';
 import ListItem from '../../components/ListItem/ListItem';
 import { theme } from '../../config/theme';
 import './Product.scss';
+import { btnStyle } from '../../config/utility';
+import { useLastPage } from '../../context/lastPage';
+import { useCartContext } from '../../context/CartContext';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -26,18 +29,6 @@ import './Product.scss';
 //   fontSize: '18px',
 //   fontWeight: 'bold',
 // };
-
-const btnStyle = {
-  backgroundColor: 'none',
-  outline: '1px solid orange',
-  color: 'orange',
-  fontSize: '20px',
-  height: '56px',
-  ':hover': {
-    backgroundColor: 'orange',
-    color: 'white',
-  },
-};
 
 const sizes = [
   {
@@ -92,6 +83,13 @@ function Product() {
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
 
+  const { addItem } = useCartContext();
+  const { handleChangePage } = useLastPage();
+
+  useEffect(() => {
+    handleChangePage(`/product/${product}`);
+  });
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -116,6 +114,12 @@ function Product() {
 
   const handleDecrementProductCounter = () => {
     setProductCounter(productCounter - 1);
+  };
+
+  const addItemToCart = () => {
+    if (productCounter !== 0) {
+      addItem({ productInfo, productCounter });
+    }
   };
 
   if (isLoading) {
@@ -187,6 +191,7 @@ function Product() {
               },
               width: '200px',
             }}
+            onClick={addItemToCart}
           >
             Add Cart
           </Button>

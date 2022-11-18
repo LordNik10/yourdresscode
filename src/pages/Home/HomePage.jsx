@@ -9,6 +9,7 @@ import './HomePage.scss';
 import Strengths from '../../components/Strengths/Strengths';
 import quality from '../../assests/imgquality.png';
 import trasparency from '../../assests/imgtrasparency.png';
+import { useLastPage } from '../../context/lastPage';
 // import products from '../../helpers/products';
 // import imgHistory from '../../assests/img-history.png';
 
@@ -31,6 +32,11 @@ function HomePage() {
   const [minPage, setMinPage] = useState(0);
   const [maxPage, setMaxPage] = useState(3);
   const [products1, setProducts1] = useState([]);
+  const { handleChangePage } = useLastPage();
+
+  useEffect(() => {
+    handleChangePage('/');
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -86,47 +92,11 @@ function HomePage() {
         >
           Il tuo stile a portata di mano
         </Typography>
-        {/* <Button
-          variant="outlined"
-          sx={{
-            borderColor: 'orange',
-            color: 'orange',
-            marginTop: '10%',
-            width: '180px',
-            height: '60px',
-            padding: '0',
-            ':hover': {
-              backgroundColor: theme.palette.secondary.main,
-              border: theme.palette.secondary.main,
-              color: 'white',
-              opacity: '0.8',
-            },
-          }}
-          className="ciao"
-        > */}
         <Link to="/products" className="styled-link">
           Show Products
         </Link>
-        {/* </Button> */}
       </Box>
-      {/* <Container
-        sx={{
-          marginTop: '5%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '5%',
-        }}
-      >
-        <img src={imgHistory} alt="img history" />
-        <Typography component="p" sx={{ width: '25%' }}>
-          Siamo un marchio di abbigliamento di lusso con la missione e lo scopo
-          di creare capi versatili, di classe e senza tempo, fatti per durare
-          nel tempo. I nostri capi di abbigliamento, accessori e scarpe non si
-          limitano a rendere più belle tutte le piccole cose della vita, ma ci
-          aiutano anche a sentirci meglio con noi stessi.
-        </Typography>
-      </Container> */}
+
       <Container maxWidth={false} disableGutters>
         <Typography
           component="h3"

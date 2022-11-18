@@ -8,14 +8,18 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
+import FaceIcon from '@mui/icons-material/Face';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import LensIcon from '@mui/icons-material/Lens';
+import { Stack } from '@mui/material';
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
-import { UseAuthContext } from '../../context/auth-context';
+import { useAuthContext } from '../../context/auth';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -24,7 +28,9 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const { isLogged } = UseAuthContext();
+  const { isLogged, handleLogin } = useAuthContext();
+  // eslint-disable-next-line
+  console.log(isLogged);
   // const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
@@ -45,6 +51,9 @@ function ResponsiveAppBar() {
   // const madeLogin = () => {
   //   setIsLogged.handleLogin();
   // };
+  const handleLogout = () => {
+    handleLogin(false);
+  };
 
   return (
     <AppBar
@@ -160,26 +169,64 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {isLogged && (
-                <Tooltip title="Open settings">
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </Tooltip>
-              )}
-
-              {!isLogged && (
-                <Typography
-                  textAlign="center"
-                  sx={{
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <Stack direction="row" sx={{ position: 'relative' }}>
+                <ShoppingCartIcon />
+                <Container
+                  maxWidth={false}
+                  disableGutters
+                  style={{
+                    fontSize: '15px',
+                    position: 'absolute',
+                    left: '15px',
+                    top: '-6px',
                     color: 'white',
-                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-                    fontWeight: '500',
+                    backgroundColor: 'red',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '20px',
+                    height: '20px',
                   }}
                 >
-                  Login
-                </Typography>
-              )}
-            </IconButton>
+                  10
+                </Container>
+                {/* <LensIcon
+                  style={{
+                    fontSize: '15px',
+                    position: 'absolute',
+                    left: '15px',
+                    top: '-6px',
+                    color: 'red',
+                  }}
+                >
+                  10
+                </LensIcon> */}
+              </Stack>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {isLogged && (
+                  <Tooltip title="Open settings">
+                    {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                    <FaceIcon fontSize="large" style={{ color: 'white' }} />
+                  </Tooltip>
+                )}
+
+                {!isLogged && (
+                  <Link to="login" style={{ textDecoration: 'none' }}>
+                    <Typography
+                      textAlign="center"
+                      sx={{
+                        color: 'white',
+                        fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                        fontWeight: '500',
+                      }}
+                    >
+                      Login
+                    </Typography>
+                  </Link>
+                )}
+              </IconButton>
+            </Stack>
             {isLogged && (
               <Menu
                 sx={{ mt: '45px' }}
@@ -199,7 +246,11 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    {setting === 'Logout' ? (
+                      <Typography onClick={handleLogout}>Logout</Typography>
+                    ) : (
+                      <Typography textAlign="center">{setting}</Typography>
+                    )}
                   </MenuItem>
                 ))}
               </Menu>
