@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 const CartContext = createContext({
   isDisplayed: false,
   listItems: [],
+  totalItems: 0,
   addItem: () => {},
 });
 
@@ -20,19 +21,22 @@ export function useCartContext() {
 function CartContextProvider({ children }) {
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [listItems, setListItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
 
   const addItem = useCallback((item) => {
     setIsDisplayed(true);
     setListItems((items) => [...items, item]);
+    setTotalItems((prevValue) => prevValue + 1);
   }, []);
 
   const cartContextProviderValue = useMemo(
     () => ({
       isDisplayed,
       listItems,
+      totalItems,
       addItem,
     }),
-    [listItems, isDisplayed, addItem],
+    [listItems, isDisplayed, totalItems, addItem],
   );
 
   return (

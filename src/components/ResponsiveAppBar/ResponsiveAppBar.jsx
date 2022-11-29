@@ -20,6 +20,7 @@ import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
 import { useAuthContext } from '../../context/auth';
+import { useCartContext } from '../../context/CartContext';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -29,6 +30,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const { isLogged, handleLogin } = useAuthContext();
+  const { totalItems } = useCartContext();
   // eslint-disable-next-line
   console.log(isLogged);
   // const setIsLogged = UseAuthContextUpdate();
@@ -185,11 +187,12 @@ function ResponsiveAppBar() {
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     width: '20px',
                     height: '20px',
                   }}
                 >
-                  10
+                  {totalItems}
                 </Container>
                 {/* <LensIcon
                   style={{
