@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,7 +17,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import LensIcon from '@mui/icons-material/Lens';
 import { Stack } from '@mui/material';
-import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
 import { useAuthContext } from '../../context/auth';
@@ -33,7 +33,6 @@ function ResponsiveAppBar() {
   const { totalItems } = useCartContext();
   // eslint-disable-next-line
   console.log(isLogged);
-  // const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -171,7 +170,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Stack alignItems="center" direction="row" spacing={2}>
+            <Stack alignItems="center" direction="row" spacing={4}>
               <Stack direction="row" sx={{ position: 'relative' }}>
                 <ShoppingCartIcon />
                 <Container
@@ -188,8 +187,10 @@ function ResponsiveAppBar() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '20px',
+                    width: 'auto',
+                    minWidth: '20px',
                     height: '20px',
+                    zIndex: 999,
                   }}
                 >
                   {totalItems}

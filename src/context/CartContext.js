@@ -12,6 +12,7 @@ const CartContext = createContext({
   listItems: [],
   totalItems: 0,
   addItem: () => {},
+  addToTotalItems: () => {},
 });
 
 export function useCartContext() {
@@ -26,7 +27,10 @@ function CartContextProvider({ children }) {
   const addItem = useCallback((item) => {
     setIsDisplayed(true);
     setListItems((items) => [...items, item]);
-    setTotalItems((prevValue) => prevValue + 1);
+  }, []);
+
+  const addToTotalItems = useCallback((numberOfItem) => {
+    setTotalItems((prevValue) => prevValue + numberOfItem);
   }, []);
 
   const cartContextProviderValue = useMemo(
@@ -35,8 +39,9 @@ function CartContextProvider({ children }) {
       listItems,
       totalItems,
       addItem,
+      addToTotalItems,
     }),
-    [listItems, isDisplayed, totalItems, addItem],
+    [listItems, isDisplayed, totalItems, addItem, addToTotalItems],
   );
 
   return (
