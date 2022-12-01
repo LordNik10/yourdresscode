@@ -15,19 +15,19 @@ function App() {
   return (
     <LastPage>
       <LoginProvider>
-        <Router>
-          <ResponsiveAppBar />
-          <CartContextProvider>
+        <CartContextProvider>
+          <Router>
+            <ResponsiveAppBar />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:product" element={<Product />} />
               <Route path="/login" element={<Login />} />
             </Routes>
-          </CartContextProvider>
 
-          <Footer />
-        </Router>
+            <Footer />
+          </Router>
+        </CartContextProvider>
       </LoginProvider>
     </LastPage>
   );

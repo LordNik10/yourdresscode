@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -29,15 +29,10 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { totalItems } = useCartContext();
-  const [itemCart, setItemCart] = useState(totalItems);
 
   const { isLogged, handleLogin } = useAuthContext();
   // eslint-disable-next-line
   console.log(isLogged);
-
-  useEffect(() => {
-    setItemCart(totalItems);
-  }, [totalItems]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -198,7 +193,7 @@ function ResponsiveAppBar() {
                     zIndex: 999,
                   }}
                 >
-                  {itemCart}
+                  {totalItems}
                 </Container>
                 {/* <LensIcon
                   style={{

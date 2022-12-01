@@ -83,11 +83,13 @@ function Product() {
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
 
-  const { addItem, addToTotalItems } = useCartContext();
+  const { addItem, addToTotalItems, totalItems } = useCartContext();
   const { handleChangePage } = useLastPage();
 
   useEffect(() => {
     handleChangePage(`/product/${product}`);
+    // eslint-disable-next-line
+    console.log('product', totalItems);
   });
 
   useEffect(() => {
@@ -196,6 +198,7 @@ function Product() {
           >
             Add Cart
           </Button>
+          <div>{totalItems}</div>
         </Grid>
       </Grid>
     </Container>
