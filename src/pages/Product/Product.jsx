@@ -82,7 +82,6 @@ function Product() {
   const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
-
   const { addItem, addToTotalItems, totalItems } = useCartContext();
   const { handleChangePage } = useLastPage();
 
@@ -115,6 +114,9 @@ function Product() {
   };
 
   const handleDecrementProductCounter = () => {
+    if (productCounter === 0) {
+      return;
+    }
     setProductCounter(productCounter - 1);
   };
 
@@ -198,7 +200,6 @@ function Product() {
           >
             Add Cart
           </Button>
-          <div>{totalItems}</div>
         </Grid>
       </Grid>
     </Container>

@@ -30,7 +30,8 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [topCart, setTopCart] = useState(0);
-  const { totalItems, handleIsDisplayed, isDisplayed } = useCartContext();
+  const [opacityCart, setOpacityCart] = useState(0);
+  const { totalItems, handleIsDisplayed } = useCartContext();
 
   const { isLogged, handleLogin } = useAuthContext();
   // eslint-disable-next-line
@@ -57,7 +58,8 @@ function ResponsiveAppBar() {
 
   const handleDisplayCart = () => {
     handleIsDisplayed();
-    setTopCart(90);
+    setTopCart(topCart === 0 ? 90 : 0);
+    setOpacityCart(opacityCart === 0 ? 1 : 0);
   };
 
   return (
@@ -175,7 +177,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Stack alignItems="center" direction="row" spacing={4}>
-              {isDisplayed && <MyCart topCart={topCart} />}
+              <MyCart topCart={topCart} opac={opacityCart} />
               <Stack direction="row" sx={{ position: 'relative' }}>
                 <ShoppingCartIcon
                   sx={{ cursor: 'pointer' }}
@@ -198,7 +200,7 @@ function ResponsiveAppBar() {
                     width: 'auto',
                     minWidth: '20px',
                     height: '20px',
-                    zIndex: 998,
+                    zIndex: 999,
                   }}
                 >
                   {totalItems}

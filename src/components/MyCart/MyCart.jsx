@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 import { Container } from '@mui/material';
 
-function MyCart({ topCart }) {
+function MyCart({ topCart, opac }) {
   return (
     <Container
       sx={{
         border: '1px solid black',
         position: 'absolute',
-        zIndex: 999,
+        zIndex: 0,
         top: topCart,
         width: '100px',
         backgroundColor: 'red',
-        transition: '1.5s all',
+        transition: '0.9s all',
+        opacity: opac,
       }}
       maxWidth={false}
       disableGutters
@@ -24,8 +25,10 @@ export default MyCart;
 
 MyCart.defaultProps = {
   topCart: 0,
+  opac: 1,
 };
 
 MyCart.propTypes = {
   topCart: PropTypes.number,
+  opac: PropTypes.number,
 };
