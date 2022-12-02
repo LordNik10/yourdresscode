@@ -13,6 +13,7 @@ const CartContext = createContext({
   totalItems: 0,
   addItem: () => {},
   addToTotalItems: () => {},
+  handleIsDisplayed: () => {},
 });
 
 export function useCartContext() {
@@ -24,8 +25,11 @@ function CartContextProvider({ children }) {
   const [listItems, setListItems] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
 
+  const handleIsDisplayed = useCallback(() => {
+    setIsDisplayed((prevValue) => !prevValue);
+  }, []);
+
   const addItem = useCallback((item) => {
-    setIsDisplayed(true);
     setListItems((items) => [...items, item]);
   }, []);
 
@@ -40,8 +44,16 @@ function CartContextProvider({ children }) {
       totalItems,
       addItem,
       addToTotalItems,
+      handleIsDisplayed,
     }),
-    [listItems, isDisplayed, totalItems, addItem, addToTotalItems],
+    [
+      listItems,
+      isDisplayed,
+      totalItems,
+      addItem,
+      addToTotalItems,
+      handleIsDisplayed,
+    ],
   );
 
   return (
