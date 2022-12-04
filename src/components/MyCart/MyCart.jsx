@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
-import { Container } from '@mui/material';
+import { Container, Stack } from '@mui/material';
+import { useCartContext } from '../../context/CartContext';
 
 function MyCart({ topCart, opac }) {
+  const { listItems } = useCartContext();
+
+  // eslint-disable-next-line
+  console.log(listItems);
+
   return (
     <Container
       sx={{
@@ -9,15 +15,36 @@ function MyCart({ topCart, opac }) {
         position: 'absolute',
         zIndex: 0,
         top: topCart,
-        width: '100px',
-        backgroundColor: 'red',
+        width: '400px',
+        right: 0,
+        backgroundColor: 'white',
         transition: '0.9s all',
         opacity: opac,
+        color: 'black',
+
+        boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
       }}
       maxWidth={false}
       disableGutters
     >
-      <h1>cart</h1>
+      <h1 style={{ margin: 0 }}>cart</h1>
+      <hr />
+      {listItems.map((el) => (
+        <Stack
+          flexDirection="row"
+          alignItems="flex-start"
+          key={el.productInfo.id}
+          marginBottom="20px"
+          padding="3px"
+        >
+          <img
+            src={el.productInfo.image}
+            alt="product"
+            style={{ width: '80px' }}
+          />
+          {el.productInfo.title}
+        </Stack>
+      ))}
     </Container>
   );
 }
