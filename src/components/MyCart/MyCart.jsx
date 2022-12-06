@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { Container, Stack } from '@mui/material';
+import { Container, Grid, Stack } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useCartContext } from '../../context/CartContext';
 
 function MyCart({ topCart, opac }) {
@@ -36,13 +37,27 @@ function MyCart({ topCart, opac }) {
           key={el.productInfo.id}
           marginBottom="20px"
           padding="3px"
+          gap="20px"
         >
           <img
             src={el.productInfo.image}
             alt="product"
             style={{ width: '80px' }}
           />
-          {el.productInfo.title}
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              {el.productInfo.title}
+            </Grid>
+            <Grid item xs={4}>
+              {el.productInfo.price}$
+            </Grid>
+            <Grid item xs={6}>
+              Q:{el.productCounter}
+            </Grid>
+            <Grid item xs={2}>
+              <DeleteIcon sx={{ cursor: 'pointer' }} />
+            </Grid>
+          </Grid>
         </Stack>
       ))}
     </Container>
