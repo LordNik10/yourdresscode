@@ -37,6 +37,10 @@ function CartContextProvider({ children }) {
     setTotalItems((prevValue) => prevValue + numberOfItem);
   }, []);
 
+  // const decrementProductCounter = useCallback((id)=>{
+  //   listItems.filter((el)=>el.productInfo.id===id)
+  // },[])
+
   const cartContextProviderValue = useMemo(
     () => ({
       isDisplayed,

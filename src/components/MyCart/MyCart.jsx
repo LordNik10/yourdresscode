@@ -49,7 +49,7 @@ function MyCart({ topCart, opac }) {
               {el.productInfo.title}
             </Grid>
             <Grid item xs={4}>
-              {el.productInfo.price}$
+              {el.productInfo.price * el.productCounter}$
             </Grid>
             <Grid item xs={6}>
               Q:{el.productCounter}
