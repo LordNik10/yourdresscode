@@ -34,8 +34,6 @@ function ResponsiveAppBar() {
   const { totalItems, handleIsDisplayed } = useCartContext();
 
   const { isLogged, handleLogin } = useAuthContext();
-  // eslint-disable-next-line
-  console.log(isLogged);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -125,10 +123,6 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  {
-                    // eslint-disable-next-line
-                    console.log(page.toLocaleLowerCase())
-                  }
                   <Link
                     style={{ textDecoration: 'none', color: 'black' }}
                     to={page === 'Home' ? `/` : `/${page.toLocaleLowerCase()}`}

@@ -87,8 +87,6 @@ function Product() {
 
   useEffect(() => {
     handleChangePage(`/product/${product}`);
-    // eslint-disable-next-line
-    console.log('product', totalItems);
   });
 
   useEffect(() => {

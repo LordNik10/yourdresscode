@@ -30,35 +30,34 @@ function CartContextProvider({ children }) {
     setIsDisplayed((prevValue) => !prevValue);
   }, []);
 
-  const addItem = useCallback(
-    (item) => {
-      let a = false;
-      listItems.map((el) => {
+  const addItem = useCallback((item) => {
+    let a = false;
+    setListItems((prevValue) =>
+      prevValue.map((el) => {
         if (item.productInfo.id === el.productInfo.id) {
           // eslint-disable-next-line
           el.productCounter += item.productCounter;
           a = true;
         }
         return el;
-      });
+      }),
+    );
 
-      if (!a) {
-        setListItems((items) => [...items, item]);
-      }
-      // setListItems((prevValue) => [
-      //   ...prevValue.map((el) => {
-      //     if (item.productInfo.id === el.productInfo.id) {
-      //       // eslint-disable-next-line
-      //       el.productCounter += item.productCounter;
-      //       return el;
-      //     }
-      //     return item;
-      //   }),
-      // ]);
-      // setListItems((items) => [...items, item]);
-    },
-    [listItems],
-  );
+    if (!a) {
+      setListItems((items) => [...items, item]);
+    }
+    // setListItems((prevValue) => [
+    //   ...prevValue.map((el) => {
+    //     if (item.productInfo.id === el.productInfo.id) {
+    //       // eslint-disable-next-line
+    //       el.productCounter += item.productCounter;
+    //       return el;
+    //     }
+    //     return item;
+    //   }),
+    // ]);
+    // setListItems((items) => [...items, item]);
+  }, []);
 
   const addToTotalItems = useCallback((numberOfItem) => {
     setTotalItems((prevValue) => prevValue + numberOfItem);
@@ -66,8 +65,6 @@ function CartContextProvider({ children }) {
 
   const decrementProductCounter = useCallback(
     (id) => {
-      // eslint-disable-next-line
-      console.log('dentro decrement');
       setListItems((prevValue) =>
         prevValue.map((el) => {
           if (el.productInfo.id === id) {

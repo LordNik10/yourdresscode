@@ -37,8 +37,6 @@ function Login() {
 
   async function onSubmiteHandleLogin(e) {
     e.preventDefault();
-    // eslint-disable-next-line
-    console.log('ciao');
 
     if (
       formInfo.username === 'johnd' &&
@@ -53,14 +51,10 @@ function Login() {
 
   const handleOnChangeUsername = (e) => {
     setFormInfo((prev) => ({ ...prev, username: e.target.value }));
-    // eslint-disable-next-line
-    console.log(e.target.value);
   };
 
   const handleOnChangePassword = (e) => {
     setFormInfo((prev) => ({ ...prev, password: e.target.value }));
-    // eslint-disable-next-line
-    console.log(e.target.value);
   };
 
   return (

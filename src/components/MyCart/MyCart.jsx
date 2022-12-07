@@ -6,9 +6,6 @@ import { useCartContext } from '../../context/CartContext';
 function MyCart({ topCart, opac }) {
   const { listItems, decrementProductCounter } = useCartContext();
 
-  // eslint-disable-next-line
-  console.log(listItems);
-
   return (
     <Container
       sx={{
