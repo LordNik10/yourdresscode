@@ -30,31 +30,61 @@ function CartContextProvider({ children }) {
     setIsDisplayed((prevValue) => !prevValue);
   }, []);
 
-  const addItem = useCallback((item) => {
-    setListItems((items) => [...items, item]);
-  }, []);
+  const addItem = useCallback(
+    (item) => {
+      let a = false;
+      listItems.map((el) => {
+        if (item.productInfo.id === el.productInfo.id) {
+          // eslint-disable-next-line
+          el.productCounter += item.productCounter;
+          a = true;
+        }
+        return el;
+      });
+
+      if (!a) {
+        setListItems((items) => [...items, item]);
+      }
+      // setListItems((prevValue) => [
+      //   ...prevValue.map((el) => {
+      //     if (item.productInfo.id === el.productInfo.id) {
+      //       // eslint-disable-next-line
+      //       el.productCounter += item.productCounter;
+      //       return el;
+      //     }
+      //     return item;
+      //   }),
+      // ]);
+      // setListItems((items) => [...items, item]);
+    },
+    [listItems],
+  );
 
   const addToTotalItems = useCallback((numberOfItem) => {
     setTotalItems((prevValue) => prevValue + numberOfItem);
   }, []);
 
-  const decrementProductCounter = useCallback((id) => {
-    // eslint-disable-next-line
-    console.log('dentro decrement');
-    setListItems((prevValue) =>
-      prevValue.map((el) => {
-        if (el.productInfo.id === id) {
-          // eslint-disable-next-line
-          el.productCounter = el.productCounter - 1;
-        }
-        return el;
-      }),
-    );
+  const decrementProductCounter = useCallback(
+    (id) => {
+      // eslint-disable-next-line
+      console.log('dentro decrement');
+      setListItems((prevValue) =>
+        prevValue.map((el) => {
+          if (el.productInfo.id === id) {
+            // eslint-disable-next-line
+            el.productCounter = el.productCounter - 1;
+          }
+          return el;
+        }),
+      );
+      addToTotalItems(-1);
 
-    setListItems((prevValue) =>
-      prevValue.filter((el) => el.productCounter !== 0),
-    );
-  }, []);
+      setListItems((prevValue) =>
+        prevValue.filter((el) => el.productCounter !== 0),
+      );
+    },
+    [addToTotalItems],
+  );
 
   const cartContextProviderValue = useMemo(
     () => ({
