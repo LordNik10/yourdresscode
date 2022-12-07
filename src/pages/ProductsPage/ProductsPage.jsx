@@ -80,7 +80,11 @@ function ProductsPage() {
   }
 
   return (
-    <Container maxWidth={false}>
+    <Container
+      maxWidth={false}
+      sx={{ position: 'absolute0', zIndex: 1 }}
+      className="ciao"
+    >
       <Typography component="h1" sx={{ fontSize: '30px' }}>
         Products
       </Typography>

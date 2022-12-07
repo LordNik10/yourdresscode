@@ -31,7 +31,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [topCart, setTopCart] = useState(0);
   const [opacityCart, setOpacityCart] = useState(0);
-  const { totalItems, handleIsDisplayed } = useCartContext();
+  const { totalItems, handleIsDisplayed, isDisplayed } = useCartContext();
 
   const { isLogged, handleLogin } = useAuthContext();
 
@@ -172,7 +172,13 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Stack alignItems="center" direction="row" spacing={4}>
-              <MyCart topCart={topCart} opac={opacityCart} />
+              {isDisplayed && (
+                <MyCart
+                  // topCart={topCart}
+                  // opac={opacityCart}
+                  handleDisplayCart={handleDisplayCart}
+                />
+              )}
               <Stack direction="row" sx={{ position: 'relative', zIndex: 2 }}>
                 <ShoppingCartIcon
                   sx={{ cursor: 'pointer' }}
