@@ -19,10 +19,10 @@ function MyCart({ handleDisplayCart }) {
         backgroundColor: 'white',
         transition: '0.9s all',
         // opacity: opac,
-        height: 500,
+        maxHeight: 500,
         color: 'black',
         boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
-        overflowY: 'scroll',
+        overflowY: 'auto',
       }}
       maxWidth={false}
       disableGutters
