@@ -82,7 +82,7 @@ function Product() {
   const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
-  const { addItem, addToTotalItems, totalItems } = useCartContext();
+  const { addItem, addToTotalItems } = useCartContext();
   const { handleChangePage } = useLastPage();
 
   useEffect(() => {
