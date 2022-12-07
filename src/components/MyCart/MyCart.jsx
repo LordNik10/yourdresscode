@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import { useCartContext } from '../../context/CartContext';
 
-function MyCart({ handleDisplayCart }) {
+function MyCart({ topCart, opac, handleDisplayCart }) {
   const { listItems, decrementProductCounter } = useCartContext();
 
   return (
@@ -13,12 +13,12 @@ function MyCart({ handleDisplayCart }) {
         border: '1px solid black',
         position: 'absolute',
         zIndex: 'auto',
-        top: 90,
+        top: topCart,
         width: '400px',
         right: 0,
         backgroundColor: 'white',
-        transition: '0.9s all',
-        // opacity: opac,
+        transition: '0.5s all',
+        opacity: opac,
         maxHeight: 500,
         color: 'black',
         boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
@@ -80,13 +80,13 @@ function MyCart({ handleDisplayCart }) {
 export default MyCart;
 
 MyCart.defaultProps = {
-  // topCart: 0,
-  // opac: 1,
+  topCart: 0,
+  opac: 1,
   handleDisplayCart: () => {},
 };
 
 MyCart.propTypes = {
-  // topCart: PropTypes.number,
-  // opac: PropTypes.number,
+  topCart: PropTypes.number,
+  opac: PropTypes.number,
   handleDisplayCart: PropTypes.func,
 };
