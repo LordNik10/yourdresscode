@@ -70,6 +70,7 @@ function ResponsiveAppBar() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        zIndex: 998,
       }}
     >
       <Container maxWidth="xl">
@@ -178,7 +179,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Stack alignItems="center" direction="row" spacing={4}>
               <MyCart topCart={topCart} opac={opacityCart} />
-              <Stack direction="row" sx={{ position: 'relative' }}>
+              <Stack direction="row" sx={{ position: 'relative', zIndex: 2 }}>
                 <ShoppingCartIcon
                   sx={{ cursor: 'pointer' }}
                   onClick={handleDisplayCart}

@@ -14,7 +14,7 @@ function MyCart({ topCart, opac }) {
       sx={{
         border: '1px solid black',
         position: 'absolute',
-        zIndex: 0,
+        zIndex: 1,
         top: topCart,
         width: '400px',
         right: 0,
