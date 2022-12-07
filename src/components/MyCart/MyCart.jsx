@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useCartContext } from '../../context/CartContext';
 
 function MyCart({ topCart, opac }) {
-  const { listItems } = useCartContext();
+  const { listItems, decrementProductCounter } = useCartContext();
 
   // eslint-disable-next-line
   console.log(listItems);
@@ -55,7 +55,10 @@ function MyCart({ topCart, opac }) {
               Q:{el.productCounter}
             </Grid>
             <Grid item xs={2}>
-              <DeleteIcon sx={{ cursor: 'pointer' }} />
+              <DeleteIcon
+                sx={{ cursor: 'pointer' }}
+                onClick={() => decrementProductCounter(el.productInfo.id)}
+              />
             </Grid>
           </Grid>
         </Stack>

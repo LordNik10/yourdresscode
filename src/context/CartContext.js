@@ -14,6 +14,7 @@ const CartContext = createContext({
   addItem: () => {},
   addToTotalItems: () => {},
   handleIsDisplayed: () => {},
+  decrementProductCounter: () => {},
 });
 
 export function useCartContext() {
@@ -37,9 +38,23 @@ function CartContextProvider({ children }) {
     setTotalItems((prevValue) => prevValue + numberOfItem);
   }, []);
 
-  // const decrementProductCounter = useCallback((id)=>{
-  //   listItems.filter((el)=>el.productInfo.id===id)
-  // },[])
+  const decrementProductCounter = useCallback((id) => {
+    // eslint-disable-next-line
+    console.log('dentro decrement');
+    setListItems((prevValue) =>
+      prevValue.map((el) => {
+        if (el.productInfo.id === id) {
+          // eslint-disable-next-line
+          el.productCounter = el.productCounter - 1;
+        }
+        return el;
+      }),
+    );
+
+    setListItems((prevValue) =>
+      prevValue.filter((el) => el.productCounter !== 0),
+    );
+  }, []);
 
   const cartContextProviderValue = useMemo(
     () => ({
@@ -49,6 +64,7 @@ function CartContextProvider({ children }) {
       addItem,
       addToTotalItems,
       handleIsDisplayed,
+      decrementProductCounter,
     }),
     [
       listItems,
@@ -57,6 +73,7 @@ function CartContextProvider({ children }) {
       addItem,
       addToTotalItems,
       handleIsDisplayed,
+      decrementProductCounter,
     ],
   );
 
