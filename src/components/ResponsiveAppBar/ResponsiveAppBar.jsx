@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -29,6 +29,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
   const [topCart, setTopCart] = useState(-500);
   const [opacityCart, setOpacityCart] = useState(0);
   const { totalItems, handleIsDisplayed } = useCartContext();
@@ -55,9 +56,13 @@ function ResponsiveAppBar() {
   };
 
   const handleDisplayCart = () => {
-    handleIsDisplayed();
-    setTopCart(topCart === -500 ? 50 : -500);
-    setOpacityCart(opacityCart === 0 ? 1 : 0);
+    if (isLogged) {
+      handleIsDisplayed();
+      setTopCart(topCart === -500 ? 50 : -500);
+      setOpacityCart(opacityCart === 0 ? 1 : 0);
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -183,28 +188,30 @@ function ResponsiveAppBar() {
                   sx={{ cursor: 'pointer' }}
                   onClick={handleDisplayCart}
                 />
-                <Container
-                  maxWidth={false}
-                  disableGutters
-                  style={{
-                    fontSize: '15px',
-                    position: 'absolute',
-                    left: '15px',
-                    top: '-6px',
-                    color: 'white',
-                    backgroundColor: 'red',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 'auto',
-                    minWidth: '20px',
-                    height: '20px',
-                    zIndex: 999,
-                  }}
-                >
-                  {totalItems}
-                </Container>
+                {isLogged && (
+                  <Container
+                    maxWidth={false}
+                    disableGutters
+                    style={{
+                      fontSize: '15px',
+                      position: 'absolute',
+                      left: '15px',
+                      top: '-6px',
+                      color: 'white',
+                      backgroundColor: 'red',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 'auto',
+                      minWidth: '20px',
+                      height: '20px',
+                      zIndex: 999,
+                    }}
+                  >
+                    {totalItems}
+                  </Container>
+                )}
 
                 {/* <LensIcon
                   style={{
