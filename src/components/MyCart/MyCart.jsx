@@ -17,12 +17,13 @@ function MyCart({ topCart, opac, handleDisplayCart }) {
         width: '400px',
         right: 0,
         backgroundColor: 'white',
-        transition: '0.5s all',
+        transition: '0.9s all',
         opacity: opac,
         maxHeight: 500,
         color: 'black',
         boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
         overflowY: 'auto',
+        padding: '10px',
       }}
       maxWidth={false}
       disableGutters
@@ -31,8 +32,19 @@ function MyCart({ topCart, opac, handleDisplayCart }) {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        height="100%"
       >
-        <h1 style={{ margin: 0 }}>cart</h1>
+        <h1 style={{ margin: 0 }}>Cart</h1>
+        <Stack flexDirection="row" justifyContent="center" alignItems="center">
+          {listItems.length > 0
+            ? Math.round(
+                listItems
+                  .map((el) => el.productInfo.price * el.productCounter)
+                  .reduce((prev, next) => prev + next),
+              )
+            : 0}
+          $
+        </Stack>
         <CloseIcon
           fontSize="large"
           onClick={handleDisplayCart}
