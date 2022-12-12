@@ -16,6 +16,7 @@ import { btnStyle } from '../../config/utility';
 import { useLastPage } from '../../context/lastPage';
 import { useCartContext } from '../../context/CartContext';
 import { useAuthContext } from '../../context/auth';
+import { useSnackBar } from '../../context/Snackbar';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -86,6 +87,7 @@ function Product() {
   const { addItem, addToTotalItems } = useCartContext();
   const { handleChangePage } = useLastPage();
   const { isLogged } = useAuthContext();
+  const { setSnackBar } = useSnackBar();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -124,6 +126,7 @@ function Product() {
   const addItemToCart = () => {
     if (!isLogged) {
       navigate('/login');
+      setSnackBar('You must be logged before', 'error');
       return;
     }
     if (productCounter !== 0) {

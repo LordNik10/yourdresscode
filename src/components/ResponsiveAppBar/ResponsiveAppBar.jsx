@@ -22,6 +22,7 @@ import { theme } from '../../config/theme';
 import { useAuthContext } from '../../context/auth';
 import { useCartContext } from '../../context/CartContext';
 import MyCart from '../MyCart/MyCart';
+import { useSnackBar } from '../../context/Snackbar';
 
 const pages = ['Home', 'Products', 'Contacs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -33,6 +34,7 @@ function ResponsiveAppBar() {
   const [topCart, setTopCart] = useState(-500);
   const [opacityCart, setOpacityCart] = useState(0);
   const { totalItems, handleIsDisplayed } = useCartContext();
+  const { setSnackBar } = useSnackBar();
 
   const { isLogged, handleLogin } = useAuthContext();
 
@@ -62,6 +64,7 @@ function ResponsiveAppBar() {
       setOpacityCart(opacityCart === 0 ? 1 : 0);
     } else {
       navigate('/login');
+      setSnackBar('You must be logged before', 'error');
     }
   };
 
