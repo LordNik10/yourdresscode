@@ -12,6 +12,7 @@ import LastPage from './context/lastPage';
 import CartContextProvider from './context/CartContext';
 import SnackBarProvider from './context/Snackbar';
 import Toaster from './components/Toaster/Toaster';
+import Contacts from './pages/Contacts/Contacts';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/product/:product" element={<Product />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/contacts" element={<Contacts />} />
               </Routes>
 
               <Footer />

@@ -31,19 +31,19 @@ function CartContextProvider({ children }) {
   }, []);
 
   const addItem = useCallback((item) => {
-    let a = false;
+    let isAlreadyExists = false;
     setListItems((prevValue) =>
       prevValue.map((el) => {
         if (item.productInfo.id === el.productInfo.id) {
           // eslint-disable-next-line
           el.productCounter += item.productCounter;
-          a = true;
+          isAlreadyExists = true;
         }
         return el;
       }),
     );
 
-    if (!a) {
+    if (!isAlreadyExists) {
       setListItems((items) => [...items, item]);
     }
     // setListItems((prevValue) => [

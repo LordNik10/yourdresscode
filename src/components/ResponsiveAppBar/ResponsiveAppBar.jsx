@@ -24,7 +24,7 @@ import { useCartContext } from '../../context/CartContext';
 import MyCart from '../MyCart/MyCart';
 import { useSnackBar } from '../../context/Snackbar';
 
-const pages = ['Home', 'Products', 'Contacs'];
+const pages = ['Home', 'Products', 'Contacts'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
