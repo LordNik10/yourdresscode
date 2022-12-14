@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -12,20 +12,24 @@ import { theme } from '../../config/theme';
 
 function Footer() {
   return (
-    <Container
+    <Stack
+      flexDirection={{ xs: 'column', md: 'row' }}
+      justifyContent={{ xs: 'space-around', md: 'center' }}
+      alignItems={{ xs: 'flex-start', md: 'center' }}
+      gap={2}
       sx={{
-        width: '100%',
+        // width: '100%',
         backgroundColor: theme.palette.primary.main,
         height: { xs: 400, md: 150 },
         padding: '10px',
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: 'flex-start',
+        // display: 'flex',
+        // flexDirection: { xs: 'column', md: 'row' },
+        // alignItems: 'flex-start',
         // flexWrap: { xs: 'wrap', md: 'nowrap' },
-        justifyContent: { xs: 'space-around', md: 'center' },
+        // justifyContent: { xs: 'space-around', md: 'center' },
         marginTop: 'auto',
       }}
-      maxWidth={false}
+      // maxWidth={false}
     >
       <Container
         maxWidth={false}
@@ -149,7 +153,10 @@ function Footer() {
         <Typography component="h4" sx={{ color: 'white' }}>
           FOLLOW US
         </Typography>
-        <a href="https://www.facebook.com/" style={{ textDecoration: 'none' }}>
+        <a
+          href="https://www.facebook.com/"
+          style={{ textDecoration: 'none', width: 'auto' }}
+        >
           <Typography
             component="span"
             sx={{
@@ -194,7 +201,7 @@ function Footer() {
           </Typography>
         </a>
       </Container>
-    </Container>
+    </Stack>
   );
 }
 
