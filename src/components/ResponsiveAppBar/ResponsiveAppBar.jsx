@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,22 +17,26 @@ import MenuItem from '@mui/material/MenuItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import LensIcon from '@mui/icons-material/Lens';
 import { Stack } from '@mui/material';
-import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import { theme } from '../../config/theme';
 import { useAuthContext } from '../../context/auth';
+import { useCartContext } from '../../context/CartContext';
+import MyCart from '../MyCart/MyCart';
+import { useSnackBar } from '../../context/Snackbar';
 
-const pages = ['Home', 'Products', 'Contacs'];
+const pages = ['Home', 'Products', 'Contacts'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
+  const [topCart, setTopCart] = useState(-500);
+  const [opacityCart, setOpacityCart] = useState(0);
+  const { totalItems, handleIsDisplayed } = useCartContext();
+  const { setSnackBar } = useSnackBar();
 
   const { isLogged, handleLogin } = useAuthContext();
-  // eslint-disable-next-line
-  console.log(isLogged);
-  // const setIsLogged = UseAuthContextUpdate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,11 +53,19 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  // const madeLogin = () => {
-  //   setIsLogged.handleLogin();
-  // };
   const handleLogout = () => {
     handleLogin(false);
+  };
+
+  const handleDisplayCart = () => {
+    if (isLogged) {
+      handleIsDisplayed();
+      setTopCart(topCart === -500 ? 50 : -500);
+      setOpacityCart(opacityCart === 0 ? 1 : 0);
+    } else {
+      navigate('/login');
+      setSnackBar('You must be logged before', 'error');
+    }
   };
 
   return (
@@ -63,6 +76,7 @@ function ResponsiveAppBar() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        zIndex: 998,
       }}
     >
       <Container maxWidth="xl">
@@ -117,10 +131,6 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  {
-                    // eslint-disable-next-line
-                    console.log(page.toLocaleLowerCase())
-                  }
                   <Link
                     style={{ textDecoration: 'none', color: 'black' }}
                     to={page === 'Home' ? `/` : `/${page.toLocaleLowerCase()}`}
@@ -169,28 +179,43 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Stack alignItems="center" direction="row" spacing={2}>
-              <Stack direction="row" sx={{ position: 'relative' }}>
-                <ShoppingCartIcon />
-                <Container
-                  maxWidth={false}
-                  disableGutters
-                  style={{
-                    fontSize: '15px',
-                    position: 'absolute',
-                    left: '15px',
-                    top: '-6px',
-                    color: 'white',
-                    backgroundColor: 'red',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '20px',
-                    height: '20px',
-                  }}
-                >
-                  10
-                </Container>
+            <Stack alignItems="center" direction="row" spacing={4}>
+              <MyCart
+                topCart={topCart}
+                opac={opacityCart}
+                handleDisplayCart={handleDisplayCart}
+              />
+
+              <Stack direction="row" sx={{ position: 'relative', zIndex: 2 }}>
+                <ShoppingCartIcon
+                  sx={{ cursor: 'pointer' }}
+                  onClick={handleDisplayCart}
+                />
+                {isLogged && (
+                  <Container
+                    maxWidth={false}
+                    disableGutters
+                    style={{
+                      fontSize: '15px',
+                      position: 'absolute',
+                      left: '15px',
+                      top: '-6px',
+                      color: 'white',
+                      backgroundColor: 'red',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 'auto',
+                      minWidth: '20px',
+                      height: '20px',
+                      zIndex: 999,
+                    }}
+                  >
+                    {totalItems}
+                  </Container>
+                )}
+
                 {/* <LensIcon
                   style={{
                     fontSize: '15px',

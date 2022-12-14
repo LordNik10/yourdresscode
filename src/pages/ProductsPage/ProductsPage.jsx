@@ -27,8 +27,6 @@ function ProductsPage() {
           throw new Error('Something goes wrong');
         }
         const data = await res.json();
-        // eslint-disable-next-line
-        console.log(data);
         setCategories((preValue) => preValue.concat(data));
       } catch (error) {
         console.error(error);
@@ -45,8 +43,6 @@ function ProductsPage() {
           throw new Error('Something goes wrong');
         }
         const data = await res.json();
-        // eslint-disable-next-line
-        console.log(data);
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -56,8 +52,6 @@ function ProductsPage() {
   }, []);
 
   async function getProductsOfCategory(params) {
-    // eslint-disable-next-line
-    console.log(params);
     try {
       const res = await fetch(
         `https://fakestoreapi.com/products/category/${params}`,
@@ -66,8 +60,6 @@ function ProductsPage() {
         throw new Error('Something goes wrong');
       }
       const data = await res.json();
-      // eslint-disable-next-line
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.error(error);
@@ -81,8 +73,6 @@ function ProductsPage() {
         throw new Error('Something goes wrong');
       }
       const data = await res.json();
-      // eslint-disable-next-line
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.error(error);
@@ -90,7 +80,11 @@ function ProductsPage() {
   }
 
   return (
-    <Container maxWidth={false}>
+    <Container
+      maxWidth={false}
+      sx={{ position: 'absolute0', zIndex: 1 }}
+      className="ciao"
+    >
       <Typography component="h1" sx={{ fontSize: '30px' }}>
         Products
       </Typography>

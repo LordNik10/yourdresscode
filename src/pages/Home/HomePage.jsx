@@ -90,7 +90,7 @@ function HomePage() {
             fontSize: theme.typography.h2,
           }}
         >
-          Il tuo stile a portata di mano
+          Your style is now
         </Typography>
         <Link to="/products" className="styled-link">
           Show Products

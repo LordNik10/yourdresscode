@@ -8,13 +8,15 @@ import {
   Button,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ListItem from '../../components/ListItem/ListItem';
 import { theme } from '../../config/theme';
 import './Product.scss';
 import { btnStyle } from '../../config/utility';
 import { useLastPage } from '../../context/lastPage';
 import { useCartContext } from '../../context/CartContext';
+import { useAuthContext } from '../../context/auth';
+import { useSnackBar } from '../../context/Snackbar';
 
 // const obj = {
 //   textDecoration: 'none',
@@ -82,9 +84,11 @@ function Product() {
   const [productInfo, setProductInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [productCounter, setProductCounter] = useState(0);
-
-  const { addItem } = useCartContext();
+  const { addItem, addToTotalItems } = useCartContext();
   const { handleChangePage } = useLastPage();
+  const { isLogged } = useAuthContext();
+  const { setSnackBar } = useSnackBar();
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleChangePage(`/product/${product}`);
@@ -113,12 +117,21 @@ function Product() {
   };
 
   const handleDecrementProductCounter = () => {
+    if (productCounter === 0) {
+      return;
+    }
     setProductCounter(productCounter - 1);
   };
 
   const addItemToCart = () => {
+    if (!isLogged) {
+      navigate('/login');
+      setSnackBar('You must be logged before', 'error');
+      return;
+    }
     if (productCounter !== 0) {
       addItem({ productInfo, productCounter });
+      addToTotalItems(productCounter);
     }
   };
 

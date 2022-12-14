@@ -10,26 +10,36 @@ import Product from './pages/Product/Product';
 import Login from './pages/Login/Login';
 import LastPage from './context/lastPage';
 import CartContextProvider from './context/CartContext';
+import SnackBarProvider from './context/Snackbar';
+import Toaster from './components/Toaster/Toaster';
+import Contacts from './pages/Contacts/Contacts';
 
 function App() {
   return (
-    <LastPage>
-      <LoginProvider>
-        <Router>
-          <ResponsiveAppBar />
+    <SnackBarProvider>
+      <LastPage>
+        <LoginProvider>
           <CartContextProvider>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/product/:product" element={<Product />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </CartContextProvider>
+            <Router>
+              <ResponsiveAppBar />
+              <Toaster
+                time={3000}
+                position={{ vertical: 'bottom', horizontal: 'right' }}
+              />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/product/:product" element={<Product />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/contacts" element={<Contacts />} />
+              </Routes>
 
-          <Footer />
-        </Router>
-      </LoginProvider>
-    </LastPage>
+              <Footer />
+            </Router>
+          </CartContextProvider>
+        </LoginProvider>
+      </LastPage>
+    </SnackBarProvider>
   );
 }
 
