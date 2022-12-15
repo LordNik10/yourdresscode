@@ -1,9 +1,11 @@
 import { Button, Grid, Stack, TextField, Typography } from '@mui/material';
 
 import imgContacts from '../../assests/contact.jpg';
+// import { useStyles } from '../../helpers/useStyle';
 import './Contacts.scss';
 
 function Contacts() {
+  // const classes = useStyles();
   return (
     <Stack
       flexDirection="column"
@@ -53,6 +55,8 @@ function Contacts() {
               <TextField
                 id="filled-basic"
                 label="Surname"
+                color="secondary"
+                // className={classes.root}
                 variant="outlined"
                 sx={{ backgroundColor: 'white' }}
                 fullWidth

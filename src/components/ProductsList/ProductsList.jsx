@@ -14,6 +14,7 @@ function MediaCard({ products }) {
       sx={{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: { xs: 'center', sm: 'flex-start' },
         flexWrap: 'wrap',
         gap: '5%',
       }}
