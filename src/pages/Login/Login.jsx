@@ -67,15 +67,18 @@ function Login() {
       <form
         onSubmit={onSubmiteHandleLogin}
         style={{
-          boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
-          padding: '20px',
+          width: '300px',
         }}
       >
         <Stack
           flexDirection="column"
           alignItems="center"
-          width="300px"
+          width={{ xs: '80%', md: '100%' }}
           spacing={3}
+          sx={{
+            boxShadow: 'rgb(0 0 0 / 20%) 0px 0px 10px -1px',
+            padding: '20px',
+          }}
         >
           <Typography component="h1" fontSize="30px">
             Login

@@ -56,7 +56,9 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <LocalPhoneIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <LocalPhoneIcon
+              sx={{ width: '7%', marginRight: '2%', minWidth: 20 }}
+            />
             04952952
           </Typography>
         </a>
@@ -74,7 +76,9 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <MailOutlineIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <MailOutlineIcon
+              sx={{ width: '7%', marginRight: '2%', minWidth: 20 }}
+            />
             yourdresscode@gmail.com
           </Typography>
         </a>
@@ -87,7 +91,7 @@ function Footer() {
             fontSize: '14px',
           }}
         >
-          <HomeIcon sx={{ width: '7%', marginRight: '2%' }} />
+          <HomeIcon sx={{ width: '7%', marginRight: '2%', minWidth: 20 }} />
           Street 31th, London
         </Typography>
       </Container>
@@ -117,7 +121,7 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <ShieldIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <ShieldIcon sx={{ width: '7%', marginRight: '2%', minWidth: 20 }} />
             Privacy Policy
           </Typography>
         </Link>
@@ -132,7 +136,7 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <CookieIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <CookieIcon sx={{ width: '7%', marginRight: '2%', minWidth: 20 }} />
             Coockie Policy
           </Typography>
         </Link>
@@ -166,7 +170,9 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <FacebookIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <FacebookIcon
+              sx={{ width: '7%', marginRight: '2%', minWidth: 20 }}
+            />
             Facebook
           </Typography>
         </a>
@@ -181,7 +187,9 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <InstagramIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <InstagramIcon
+              sx={{ width: '7%', marginRight: '2%', minWidth: 20 }}
+            />
             Instagram
           </Typography>
         </a>
@@ -196,7 +204,9 @@ function Footer() {
               fontSize: '14px',
             }}
           >
-            <YouTubeIcon sx={{ width: '7%', marginRight: '2%' }} />
+            <YouTubeIcon
+              sx={{ width: '7%', marginRight: '2%', minWidth: 20 }}
+            />
             Youtube
           </Typography>
         </a>
