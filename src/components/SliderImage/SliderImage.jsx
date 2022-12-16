@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
+import { theme } from '../../config/theme';
 
 export default function ImgMediaCard({ productsList, isButton }) {
   return (
@@ -45,7 +46,12 @@ export default function ImgMediaCard({ productsList, isButton }) {
           </Link>
 
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              fontSize={theme.typography.body1}
+            >
               {el.title}
             </Typography>
             {/* <Typography variant="body2" color="text.secondary">

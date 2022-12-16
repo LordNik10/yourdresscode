@@ -100,7 +100,8 @@ function HomePage() {
       <Container maxWidth={false} disableGutters>
         <Typography
           component="h3"
-          sx={{ padding: '24px', fontFamily: 'Roboto', fontSize: '30px' }}
+          sx={{ padding: '24px', fontFamily: 'Roboto' }}
+          fontSize={theme.typography.h3}
         >
           Our Products
         </Typography>

@@ -67,7 +67,7 @@ export const theme = createTheme({
 
 theme.typography.h1 = {
   [theme.breakpoints.up('xs')]: {
-    fontSize: '30px',
+    fontSize: '35px',
   },
   [theme.breakpoints.up('sm')]: {
     fontSize: '49px',
