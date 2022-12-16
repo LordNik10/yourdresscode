@@ -141,25 +141,33 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <Logo className="logo-small" />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'none', sm: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'Onyx',
-              fontSize: '35px',
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          <Stack
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            width="100%"
+            display={{ sm: 'flex', md: 'none' }}
           >
-            Your Dress Code
-          </Typography>
+            <Logo className="logo-small" />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                display: { xs: 'none', sm: 'flex', md: 'none' },
+                // flexGrow: 1,
+                fontFamily: 'Onyx',
+                fontSize: '35px',
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                justifyContent: 'center',
+              }}
+            >
+              Your Dress Code
+            </Typography>
+          </Stack>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -179,14 +187,18 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Stack alignItems="center" direction="row" spacing={4}>
+            <Stack alignItems="center" direction="row" margin={0}>
               <MyCart
                 topCart={topCart}
                 opac={opacityCart}
                 handleDisplayCart={handleDisplayCart}
               />
 
-              <Stack direction="row" sx={{ position: 'relative', zIndex: 2 }}>
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{ position: 'relative', zIndex: 2 }}
+              >
                 <ShoppingCartIcon
                   sx={{ cursor: 'pointer' }}
                   onClick={handleDisplayCart}
