@@ -187,7 +187,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Stack alignItems="center" direction="row" margin={0}>
+            <Stack alignItems="center" direction="row" gap="20px" margin={0}>
               <MyCart
                 topCart={topCart}
                 opac={opacityCart}
@@ -210,7 +210,7 @@ function ResponsiveAppBar() {
                     style={{
                       fontSize: '15px',
                       position: 'absolute',
-                      left: '15px',
+                      // left: '15px',
                       top: '-6px',
                       color: 'white',
                       backgroundColor: 'red',

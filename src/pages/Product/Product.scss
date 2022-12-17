@@ -16,3 +16,14 @@
   color: white;
   background-color: orange;
 }
+
+.imgProduct {
+  width: 400px;
+}
+
+@media screen and (max-width: 900px) {
+  .imgProduct {
+    width: 300px;
+    margin-bottom: 3%;
+  }
+}

@@ -2,7 +2,6 @@ import {
   CircularProgress,
   Typography,
   Stack,
-  Grid,
   Container,
   TextField,
   Button,
@@ -148,21 +147,37 @@ function Product() {
   }
 
   return (
-    <Container sx={{ marginTop: '3%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid
+    <Container sx={{ marginTop: '3%', marginBottom: '3%' }}>
+      {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}> */}
+
+      <Typography
+        component="h3"
+        fontSize={theme.typography.h3}
+        width="100%"
+        margin={0}
+      >
+        {productInfo.title}
+      </Typography>
+
+      {/* <Grid
           item
           xs={5}
           display="flex"
           alignItems="center"
           justifyContent="center"
+        > */}
+      <Stack
+        flexDirection={{ xs: 'column', md: 'row' }}
+        alignItems="center"
+        justifyContent="center"
+        gap="10%"
+      >
+        <img src={productInfo.image} alt="product" className="imgProduct" />
+        <Stack
+          flexDirection="column"
+          width={{ xs: '100%', md: '50%' }}
+          // alignItems={{ xs: 'center', md: 'flex-start' }}
         >
-          <img src={productInfo.image} alt="product" style={{ width: '70%' }} />
-        </Grid>
-        <Grid item xs={7}>
-          <Typography component="h3" fontSize={theme.typography.h3}>
-            {productInfo.title}
-          </Typography>
           <Typography component="p" fontSize={theme.typography.body1}>
             {productInfo.description}
           </Typography>
@@ -208,8 +223,12 @@ function Product() {
           >
             Add Cart
           </Button>
-        </Grid>
-      </Grid>
+        </Stack>
+        {/* </Grid> */}
+        {/* <Grid item xs={7}> */}
+      </Stack>
+      {/* </Grid>
+      </Grid> */}
     </Container>
   );
 }
