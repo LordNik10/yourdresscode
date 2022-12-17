@@ -1,4 +1,4 @@
-import { Typography, Container, Box } from '@mui/material';
+import { Typography, Container, Box, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
@@ -88,7 +88,11 @@ function ProductsPage() {
       <Typography component="h1" sx={{ fontSize: '30px' }}>
         Products
       </Typography>
-      <Box sx={{ marginTop: '5%', display: 'flex', alignItems: 'flex-start' }}>
+      <Stack
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        alignItems={{ xs: 'center', sm: 'flex-start' }}
+        marginTop="5%"
+      >
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
           <nav aria-label="main mailbox folders">
             <Typography component="h2" sx={{ fontSize: '25px' }}>
@@ -117,7 +121,7 @@ function ProductsPage() {
         </Box>
 
         <MediaCard products={products} />
-      </Box>
+      </Stack>
     </Container>
   );
 }

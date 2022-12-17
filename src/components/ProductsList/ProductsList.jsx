@@ -14,6 +14,7 @@ function MediaCard({ products }) {
       sx={{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: { xs: 'center', sm: 'flex-start' },
         flexWrap: 'wrap',
         gap: '5%',
       }}
@@ -26,7 +27,7 @@ function MediaCard({ products }) {
         >
           <Card
             sx={{
-              width: 350,
+              width: { xs: 250, sm: 350 },
               height: 530,
               marginBottom: '2%',
               cursor: 'pointer',

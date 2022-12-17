@@ -6,6 +6,7 @@ import {
   CardContent,
   Container,
 } from '@mui/material';
+import { theme } from '../../config/theme';
 
 function Strengths({ strengthsList }) {
   return (
@@ -64,6 +65,7 @@ function Strengths({ strengthsList }) {
               </Typography>
               <Typography
                 variant="body2"
+                fontSize={theme.typography.body1}
                 color="text.secondary"
                 sx={{ textAlign: 'center' }}
               >

@@ -66,8 +66,8 @@ export const theme = createTheme({
 });
 
 theme.typography.h1 = {
-  [theme.breakpoints.up('xs')]: {
-    fontSize: '30px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '32px',
   },
   [theme.breakpoints.up('sm')]: {
     fontSize: '49px',
@@ -78,7 +78,7 @@ theme.typography.h1 = {
 };
 
 theme.typography.h2 = {
-  [theme.breakpoints.up('xs')]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '20px',
   },
   [theme.breakpoints.up('sm')]: {
@@ -90,7 +90,7 @@ theme.typography.h2 = {
 };
 
 theme.typography.h3 = {
-  [theme.breakpoints.up('xs')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '24px',
   },
   [theme.breakpoints.up('md')]: {
@@ -126,8 +126,8 @@ theme.typography.h6 = {
 };
 
 theme.typography.body1 = {
-  [theme.breakpoints.up('xs')]: {
-    fontSize: '16px',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '14px',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '16px',

@@ -73,11 +73,8 @@ function HomePage() {
       <Box className="container-homepage">
         <Typography
           component="h1"
-          sx={{
-            fontFamily: 'broadway',
-            color: 'white',
-            fontSize: theme.typography.h1,
-          }}
+          fontSize={theme.typography.h1}
+          sx={{ fontFamily: 'broadway', color: 'white' }}
         >
           Your Dress Code
         </Typography>
@@ -92,7 +89,11 @@ function HomePage() {
         >
           Your style is now
         </Typography>
-        <Link to="/products" className="styled-link">
+        <Link
+          to="/products"
+          className="styled-link"
+          style={{ fontSize: theme.typography.body1 }}
+        >
           Show Products
         </Link>
       </Box>
@@ -100,7 +101,8 @@ function HomePage() {
       <Container maxWidth={false} disableGutters>
         <Typography
           component="h3"
-          sx={{ padding: '24px', fontFamily: 'Roboto', fontSize: '30px' }}
+          sx={{ padding: '24px', fontFamily: 'Roboto' }}
+          fontSize={theme.typography.h3}
         >
           Our Products
         </Typography>

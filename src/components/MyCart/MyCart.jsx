@@ -14,7 +14,7 @@ function MyCart({ topCart, opac, handleDisplayCart }) {
         position: 'absolute',
         zIndex: 'auto',
         top: topCart,
-        width: '400px',
+        width: { xs: '300px', md: '400px' },
         right: 0,
         backgroundColor: 'white',
         transition: '0.9s all',
