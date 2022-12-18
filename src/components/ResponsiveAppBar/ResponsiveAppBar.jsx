@@ -148,7 +148,9 @@ function ResponsiveAppBar() {
             width="100%"
             display={{ sm: 'flex', md: 'none' }}
           >
-            <Logo className="logo-small" />
+            <Link to="/">
+              <Logo className="logo-small" />
+            </Link>
             <Typography
               variant="h5"
               noWrap
