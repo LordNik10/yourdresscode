@@ -1,4 +1,10 @@
-import { Typography, Container, Box, Stack } from '@mui/material';
+import {
+  Typography,
+  Container,
+  Box,
+  Stack,
+  CircularProgress,
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
@@ -12,6 +18,7 @@ function ProductsPage() {
   // eslint-disable-next-line
   const [categories, setCategories] = useState(['All Products']);
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { handleChangePage } = useLastPage();
 
@@ -21,6 +28,7 @@ function ProductsPage() {
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
       try {
         const res = await fetch('https://fakestoreapi.com/products/categories');
         if (!res.ok) {
@@ -44,6 +52,7 @@ function ProductsPage() {
         }
         const data = await res.json();
         setProducts(data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -77,6 +86,20 @@ function ProductsPage() {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  if (isLoading) {
+    return (
+      <Stack
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        width="100%"
+        height="100%"
+      >
+        <CircularProgress color="warning" />
+      </Stack>
+    );
   }
 
   return (
