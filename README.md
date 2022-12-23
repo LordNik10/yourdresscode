@@ -1,4 +1,30 @@
-# Getting Started with Create React App
+# YourDressCode
+
+## Table of contents
+
+- [General info](#general-info)
+- [Features](#features)
+
+## General Info
+
+This project is an e-commerce web site of a clothing company
+
+## Features
+
+The e-commerce is formed by 3 pages:
+
+- The Homepage
+- The Products Page
+- The Contact Page
+
+It's possible also test the login with this data:
+
+- username: johnd
+- password: yourdresscode3
+
+After an user is logged in he can add product on cart and watch the cart's summary
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
