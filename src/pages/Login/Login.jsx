@@ -1,9 +1,10 @@
 import { Typography, Stack, TextField, Button } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { btnStyle } from '../../config/utility';
-import { useAuthContext } from '../../context/auth';
-import { useLastPage } from '../../context/lastPage';
+// import { useAuthContext } from '../../context/auth';
+// import { useLastPage } from '../../context/lastPage';
+import { useFirebase } from '../../firebase/hooks/useFirebase';
 
 // const CssTextField = withStyles({
 //   root: {
@@ -29,24 +30,29 @@ import { useLastPage } from '../../context/lastPage';
 function Login() {
   // username: johnd
   // password: yourdresscode3
-  const { handleLogin } = useAuthContext();
-  const { lastPage } = useLastPage();
-  const navigate = useNavigate();
+  // const { handleLogin } = useAuthContext();
+  // const { lastPage } = useLastPage();
+  // const navigate = useNavigate();
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [formInfo, setFormInfo] = useState({});
+  const { loginEmailAndPassword } = useFirebase();
 
   async function onSubmiteHandleLogin(e) {
     e.preventDefault();
-
-    if (
-      formInfo.username === 'johnd' &&
-      formInfo.password === 'yourdresscode3'
-    ) {
-      handleLogin(true);
-      navigate(lastPage);
-    } else {
+    try {
+      loginEmailAndPassword(formInfo.username, formInfo.password);
+    } catch (error) {
       setIsPasswordValid(true);
     }
+    // if (
+    //   formInfo.username === 'johnd' &&
+    //   formInfo.password === 'yourdresscode3'
+    // ) {
+    //   handleLogin(true);
+    //   navigate(lastPage);
+    // } else {
+    //   setIsPasswordValid(true);
+    // }
   }
 
   const handleOnChangeUsername = (e) => {
