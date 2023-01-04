@@ -4,6 +4,7 @@ import React, {
   createContext,
   useContext,
   useCallback,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -27,6 +28,12 @@ function LoginProvider({ children }) {
   }
 
   const memoizedHandleLogin = useCallback(handleLogin, []);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      handleLogin(true);
+    }
+  }, []);
 
   const handleLoginMemo = useMemo(
     () => ({ isLogged: login.isLogged, handleLogin: memoizedHandleLogin }),
