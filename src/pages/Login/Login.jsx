@@ -44,15 +44,6 @@ function Login() {
     } catch (error) {
       setIsPasswordValid(true);
     }
-    // if (
-    //   formInfo.username === 'johnd' &&
-    //   formInfo.password === 'yourdresscode3'
-    // ) {
-    //   handleLogin(true);
-    //   navigate(lastPage);
-    // } else {
-    //   setIsPasswordValid(true);
-    // }
   }
 
   const handleOnChangeUsername = (e) => {

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { firebaseConfig } from '../config';
 
 const app = initializeApp(firebaseConfig);
@@ -17,8 +17,20 @@ export const handleLoginEmailAndPassword = async (
     // eslint-disable-next-line
     console.log(user);
     sessionStorage.setItem('token', user.user.accessToken);
+    sessionStorage.setItem('expirationDate', Date.now() + 60000);
     handleLogin(true);
     navigate(lastPage);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const handleLogoutEmailAndPassword = async (handleLogin) => {
+  try {
+    await signOut(auth);
+    handleLogin(false);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('expirationDate');
   } catch (error) {
     console.error(error);
   }

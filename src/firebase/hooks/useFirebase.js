@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/auth';
 import { useLastPage } from '../../context/lastPage';
-import { handleLoginEmailAndPassword } from '../services';
+import {
+  handleLoginEmailAndPassword,
+  handleLogoutEmailAndPassword,
+} from '../services';
 
 export const useFirebase = () => {
   const { handleLogin } = useAuthContext();
@@ -18,5 +21,9 @@ export const useFirebase = () => {
     );
   };
 
-  return { loginEmailAndPassword };
+  const logoutEmailAndPassword = () => {
+    handleLogoutEmailAndPassword(handleLogin);
+  };
+
+  return { loginEmailAndPassword, logoutEmailAndPassword };
 };

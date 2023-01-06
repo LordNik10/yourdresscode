@@ -7,6 +7,7 @@ import React, {
   useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useSnackBar } from './Snackbar';
 
 const AuthContext = createContext({
   isLogged: false,
@@ -22,6 +23,7 @@ function LoginProvider({ children }) {
     isLogged: false,
     handleLogin: () => {},
   });
+  const { setSnackBar } = useSnackBar();
 
   function handleLogin(loginValue) {
     setIsLogged((prevValue) => ({ prevValue, isLogged: loginValue }));
@@ -30,10 +32,19 @@ function LoginProvider({ children }) {
   const memoizedHandleLogin = useCallback(handleLogin, []);
 
   useEffect(() => {
-    if (sessionStorage.getItem('token')) {
+    if (
+      sessionStorage.getItem('token') &&
+      sessionStorage.getItem('expirationDate') >= Date.now()
+    ) {
       handleLogin(true);
+    } else {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('expirationDate');
+      if (sessionStorage.getItem('token')) {
+        setSnackBar('Your session is over, please log in again', 'error');
+      }
     }
-  }, []);
+  }, [setSnackBar]);
 
   const handleLoginMemo = useMemo(
     () => ({ isLogged: login.isLogged, handleLogin: memoizedHandleLogin }),
