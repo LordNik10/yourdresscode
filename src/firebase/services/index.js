@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 import { firebaseConfig } from '../config';
 
 const app = initializeApp(firebaseConfig);
@@ -31,6 +36,21 @@ export const handleLogoutEmailAndPassword = async (handleLogin) => {
     handleLogin(false);
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('expirationDate');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const handleCreateNewUser = async (
+  email,
+  password,
+  setSnackBar,
+  navigate,
+) => {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    setSnackBar('User created successfully', 'success');
+    navigate('/login');
   } catch (error) {
     console.error(error);
   }
