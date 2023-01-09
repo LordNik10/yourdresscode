@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import { useFirebase } from '../../firebase/hooks/useFirebase';
-import { btnStyle } from '../../config/utility';
+import { btnStyle, regexPassword } from '../../config/utility';
 
 export default function Register() {
-  const [formInfo, setFormInfo] = useState({});
+  const [formInfo, setFormInfo] = useState({
+    username: '',
+    password: '',
+  });
+  const [isPasswordInValid, setIsPasswordInValid] = useState(false);
   const { createNewUser } = useFirebase();
 
   const onSubmiteHandleCreateAccount = (e) => {
     e.preventDefault();
+    if (!regexPassword.test(formInfo.password)) {
+      setIsPasswordInValid(true);
+      return;
+    }
+
     createNewUser(formInfo.username, formInfo.password);
   };
 
@@ -45,9 +54,9 @@ export default function Register() {
           <Typography component="h1" fontSize="30px">
             Register now
           </Typography>
-          {/* <Typography component="p" fontSize="12px" color="red">
-            {isPasswordValid && 'password or username are not valid'}
-          </Typography> */}
+          <Typography component="p" fontSize="12px" color="red">
+            {isPasswordInValid && 'password or username are not valid'}
+          </Typography>
           <TextField
             autoComplete="username"
             placeholder="username"
