@@ -7,7 +7,8 @@ export default function Register() {
   const [formInfo, setFormInfo] = useState({});
   const { createNewUser } = useFirebase();
 
-  const onSubmiteHandleLogin = () => {
+  const onSubmiteHandleCreateAccount = (e) => {
+    e.preventDefault();
     createNewUser(formInfo.username, formInfo.password);
   };
 
@@ -26,7 +27,7 @@ export default function Register() {
       height="100%"
     >
       <form
-        onSubmit={onSubmiteHandleLogin}
+        onSubmit={onSubmiteHandleCreateAccount}
         style={{
           width: '300px',
         }}
@@ -52,6 +53,7 @@ export default function Register() {
             placeholder="username"
             label="Username"
             variant="outlined"
+            type="email"
             autoFocus
             onChange={(e) => handleOnChangeUsername(e)}
             // required

@@ -89,6 +89,7 @@ function Login() {
             placeholder="username"
             label="Username"
             variant="outlined"
+            type="email"
             autoFocus
             onChange={(e) => handleOnChangeUsername(e)}
             // required

@@ -48,7 +48,9 @@ export const handleCreateNewUser = async (
   navigate,
 ) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    // eslint-disable-next-line
+    console.log(res);
     setSnackBar('User created successfully', 'success');
     navigate('/login');
   } catch (error) {
