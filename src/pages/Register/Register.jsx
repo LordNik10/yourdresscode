@@ -55,7 +55,8 @@ export default function Register() {
             Register now
           </Typography>
           <Typography component="p" fontSize="12px" color="red">
-            {isPasswordInValid && 'password or username are not valid'}
+            {isPasswordInValid &&
+              'password must be atleast 6 characters, atleast one letter and one number'}
           </Typography>
           <TextField
             autoComplete="username"

@@ -35,15 +35,22 @@ function Login() {
   // const { lastPage } = useLastPage();
   // const navigate = useNavigate();
   const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const [formInfo, setFormInfo] = useState({});
+  const [formInfo, setFormInfo] = useState({
+    username: '',
+    password: '',
+  });
   const { loginEmailAndPassword } = useFirebase();
 
   async function onSubmiteHandleLogin(e) {
     e.preventDefault();
+    if (formInfo.username.length <= 0 || formInfo.password <= 0) {
+      setIsPasswordValid(true);
+      return;
+    }
     try {
       loginEmailAndPassword(formInfo.username, formInfo.password);
     } catch (error) {
-      setIsPasswordValid(true);
+      console.error(error);
     }
   }
 
