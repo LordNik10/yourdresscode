@@ -13,6 +13,7 @@ import CartContextProvider from './context/CartContext';
 import SnackBarProvider from './context/Snackbar';
 import Toaster from './components/Toaster/Toaster';
 import Contacts from './pages/Contacts/Contacts';
+import Register from './pages/Register/Register';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/product/:product" element={<Product />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/contacts" element={<Contacts />} />
+                <Route path="/register" element={<Register />} />
               </Routes>
 
               <Footer />

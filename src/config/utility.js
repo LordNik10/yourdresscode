@@ -9,3 +9,5 @@ export const btnStyle = {
     color: 'white',
   },
 };
+
+export const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
