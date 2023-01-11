@@ -22,7 +22,7 @@ export const handleLoginEmailAndPassword = async (
     // eslint-disable-next-line
     console.log(user);
     sessionStorage.setItem('token', user.user.accessToken);
-    sessionStorage.setItem('expirationDate', Date.now() + 60000);
+    sessionStorage.setItem('expirationDate', Date.now() + 1800000);
     handleLogin(true);
     navigate(lastPage);
   } catch (error) {
