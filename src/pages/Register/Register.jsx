@@ -1,58 +1,25 @@
-import { Typography, Stack, TextField, Button } from '@mui/material';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
-import { btnStyle } from '../../config/utility';
-// import { useAuthContext } from '../../context/auth';
-// import { useLastPage } from '../../context/lastPage';
+import { Button, Stack, TextField, Typography } from '@mui/material';
 import { useFirebase } from '../../firebase/hooks/useFirebase';
+import { btnStyle, regexPassword } from '../../config/utility';
 
-// const CssTextField = withStyles({
-//   root: {
-//     '& label.Mui-focused': {
-//       color: 'white',
-//     },
-//     '& .MuiInput-underline:after': {
-//       borderBottomColor: 'yellow',
-//     },
-//     '& .MuiOutlinedInput-root': {
-//       '& fieldset': {
-//         borderColor: 'white',
-//       },
-//       '&:hover fieldset': {
-//         borderColor: 'white',
-//       },
-//       '&.Mui-focused fieldset': {
-//         borderColor: 'yellow',
-//       },
-//     },
-//   },
-// })(TextField);
-function Login() {
-  // username: johnd
-  // password: yourdresscode3
-  // const { handleLogin } = useAuthContext();
-  // const { lastPage } = useLastPage();
-  // const navigate = useNavigate();
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+export default function Register() {
   const [formInfo, setFormInfo] = useState({
     username: '',
     password: '',
   });
-  const { loginEmailAndPassword } = useFirebase();
+  const [isPasswordInValid, setIsPasswordInValid] = useState(false);
+  const { createNewUser } = useFirebase();
 
-  async function onSubmiteHandleLogin(e) {
+  const onSubmiteHandleCreateAccount = (e) => {
     e.preventDefault();
-    if (formInfo.username.length <= 0 || formInfo.password <= 0) {
-      setIsPasswordValid(true);
+    if (!regexPassword.test(formInfo.password)) {
+      setIsPasswordInValid(true);
       return;
     }
-    try {
-      loginEmailAndPassword(formInfo.username, formInfo.password);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+
+    createNewUser(formInfo.username, formInfo.password);
+  };
 
   const handleOnChangeUsername = (e) => {
     setFormInfo((prev) => ({ ...prev, username: e.target.value }));
@@ -61,7 +28,6 @@ function Login() {
   const handleOnChangePassword = (e) => {
     setFormInfo((prev) => ({ ...prev, password: e.target.value }));
   };
-
   return (
     <Stack
       flexDirection="row"
@@ -70,7 +36,7 @@ function Login() {
       height="100%"
     >
       <form
-        onSubmit={onSubmiteHandleLogin}
+        onSubmit={onSubmiteHandleCreateAccount}
         style={{
           width: '300px',
         }}
@@ -86,10 +52,11 @@ function Login() {
           }}
         >
           <Typography component="h1" fontSize="30px">
-            Login
+            Register now
           </Typography>
           <Typography component="p" fontSize="12px" color="red">
-            {isPasswordValid && 'password or username are not valid'}
+            {isPasswordInValid &&
+              'password must be atleast 6 characters, atleast one letter and one number'}
           </Typography>
           <TextField
             autoComplete="username"
@@ -111,15 +78,10 @@ function Login() {
             // required
           />
           <Button sx={btnStyle} type="submit">
-            Login
+            Create
           </Button>
-          <Typography component="span" fontSize="16px">
-            Or <Link to="/register">register</Link> now
-          </Typography>
         </Stack>
       </form>
     </Stack>
   );
 }
-
-export default Login;

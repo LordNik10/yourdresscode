@@ -23,6 +23,7 @@ import { useAuthContext } from '../../context/auth';
 import { useCartContext } from '../../context/CartContext';
 import MyCart from '../MyCart/MyCart';
 import { useSnackBar } from '../../context/Snackbar';
+import { useFirebase } from '../../firebase/hooks/useFirebase';
 
 const pages = ['Home', 'Products', 'Contacts'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -35,8 +36,9 @@ function ResponsiveAppBar() {
   const [opacityCart, setOpacityCart] = useState(0);
   const { totalItems, handleIsDisplayed } = useCartContext();
   const { setSnackBar } = useSnackBar();
+  const { logoutEmailAndPassword } = useFirebase();
 
-  const { isLogged, handleLogin } = useAuthContext();
+  const { isLogged } = useAuthContext();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -54,7 +56,7 @@ function ResponsiveAppBar() {
   };
 
   const handleLogout = () => {
-    handleLogin(false);
+    logoutEmailAndPassword();
   };
 
   const handleDisplayCart = () => {
