@@ -26,7 +26,8 @@ import { useSnackBar } from '../../context/Snackbar';
 import { useFirebase } from '../../firebase/hooks/useFirebase';
 
 const pages = ['Home', 'Products', 'Contacts'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -246,7 +247,7 @@ function ResponsiveAppBar() {
               </Stack>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {isLogged && (
-                  <Tooltip title="Open settings">
+                  <Tooltip title="Open menu">
                     {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                     <FaceIcon fontSize="large" style={{ color: 'white' }} />
                   </Tooltip>
