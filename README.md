@@ -53,7 +53,7 @@ The login page allows users to access their account by providing their email add
 
 Once the user is logged in, their session will last for 30 minutes. After this time, the user will be prompted to log in again. If the user refreshes the page during the session, the session will be maintained and the user will remain logged in.
 
-### API
+## API
 
 For the list of items, I am using the APIs of the website: https://fakestoreapi.com/
 
