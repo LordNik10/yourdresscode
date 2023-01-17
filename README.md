@@ -28,32 +28,32 @@ The e-commerce is formed by 3 pages:
 - The Products Page
 - The Contact Page
 
-## Homepage
+### Homepage
 
 On the homepage of our e-commerce site, visitors can find a variety of useful information and features. Firstly, the site's title is prominently displayed, allowing users to immediately know what the site is about. Additionally, there is a product preview section where users can scroll through and view some of our most popular items. In a separate section, the strengths of the company can be highlighted, as well as any current special offers or promotions.
 Overall, the homepage is designed to provide a general overview of the site and allow users to easily navigate to the information or features of their interest.
 
-## Products page
+### Products page
 
 On the items page, we can see all the available items for purchase, users can view a wide range of products arranged in a clear and easy to navigate manner. The products can be filtered through various categories. Users can view images of the products, the names of the products, and the price. Overall, this page is designed to allow users to easily find the products of their interest and facilitate the purchasing process.
 
 By clicking on a specific product, the specific page of that product will open where we can view the description, select the quantity of items, any sizes or colors for clothing items and add the product to the cart if we are logged in.
 
-## Contacts page
+### Contacts page
 
 The contact page is where users can reach out to the company for more information or to make specific requests. On this page, there is a contact form that users can fill out to send an email to the company. The form typically includes fields for the user's name, email address, and a message section where they can provide more details about their inquiry. Additionally, there could be a phone number. Overall, the contact page is designed to make it easy for users to get in touch with the company and get the information they need.
 
-## Login
+### Login
 
 It is possible to log in through the appropriate login page. If a user is not yet registered, they can do so by clicking on "register," they will be taken to another page where they can create a new account with email and password.
 
-## Firebase
+### Firebase
 
 The login page allows users to access their account by providing their email address and password. The authentication process is handled by Firebase, a platform that provides a variety of tools and services for mobile and web application development, including user authentication. When a user submits their login credentials, Firebase checks them against the information stored in its database to confirm that the user is who they claim to be. If the credentials match, Firebase grants the user access to their account. If the user does not have an account, they can register by providing their personal information, creating a new account that will be stored in Firebase's database, so that they can log in with that information next time. Firebase uses industry standard security protocols to ensure that user data is protected and that only authorized users can access the system.
 
 Once the user is logged in, their session will last for 30 minutes. After this time, the user will be prompted to log in again. If the user refreshes the page during the session, the session will be maintained and the user will remain logged in.
 
-## API
+### API
 
 For the list of items, I am using the APIs of the website: https://fakestoreapi.com/
 
