@@ -38,11 +38,11 @@ function LoginProvider({ children }) {
     ) {
       handleLogin(true);
     } else {
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('expirationDate');
       if (sessionStorage.getItem('token')) {
         setSnackBar('Your session is over, please log in again', 'error');
       }
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('expirationDate');
     }
   }, [setSnackBar]);
 
